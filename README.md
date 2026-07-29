@@ -7,8 +7,7 @@ students. Paying from a pocket earns partner perks.
 
 **Concept case study. Not a shipping product, not a commitment to build anything.**
 
-🔗 **[Browse the screens →](https://JCHIU.github.io/sofi-pockets/)** *(update this once
-Pages is enabled — see Publishing below)*
+🔗 **[Browse the screens →](https://jchiu-sofi.github.io/pockets/)**
 
 The linked gallery is live and interactive: each frame is the real HTML, so you can
 scroll inside it. The images below are static captures for quick scanning.
@@ -78,16 +77,20 @@ Two things worth knowing before you touch the tooling:
 
 ## Publishing
 
-Pages serves from `main` → `/docs`:
+Pages serves the live gallery from `main` → `/docs`, so a push updates the site:
 
 ```bash
-gh repo create sofi-pockets --public --source=. --remote=origin --push
-gh api -X POST repos/:owner/sofi-pockets/pages \
-  -f 'source[branch]=main' -f 'source[path]=/docs'
+./render.sh            # rebuild docs/index.html and the captures
+git add -A && git commit -m "Update screens" && git push
 ```
 
-Or on github.com: **Settings → Pages → Source: Deploy from a branch → main, /docs**.
-Then put the resulting URL at the top of this file.
+If Pages ever needs re-enabling: **Settings → Pages → Deploy from a branch → main,
+`/docs`**, or
+
+```bash
+gh api -X POST repos/jchiu-sofi/pockets/pages \
+  -f 'source[branch]=main' -f 'source[path]=/docs'
+```
 
 ## Regenerating in Stitch
 
