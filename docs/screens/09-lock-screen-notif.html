@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>iPhone Lock Screen - SoFi Pockets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#201747",
+                        "on-tertiary-fixed-variant": "#5C4708",
+                        "primary": "#00A2C7",
+                        "primary-fixed": "#CFEFF8",
+                        "tertiary-fixed": "#FED880",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#FEEFC7",
+                        "on-error-container": "#7A0C1B",
+                        "outline": "#8A8D91",
+                        "outline-variant": "#D9D5D0",
+                        "on-secondary-fixed": "#201747",
+                        "error": "#E03E52",
+                        "tertiary-fixed-dim": "#F5C95F",
+                        "surface-bright": "#FFFFFF",
+                        "on-tertiary-fixed": "#3A2C00",
+                        "background": "#F7F5F2",
+                        "on-tertiary-container": "#4A3A0A",
+                        "secondary-container": "#E5E1E6",
+                        "surface-container-highest": "#E5E1E6",
+                        "inverse-on-surface": "#F7F5F2",
+                        "primary-container": "#E3F4FA",
+                        "on-primary-container": "#00485A",
+                        "secondary-fixed": "#E5E1E6",
+                        "surface-container-high": "#ECE9E4",
+                        "surface-variant": "#E9E6E1",
+                        "surface-container-low": "#FBFAF8",
+                        "on-background": "#201747",
+                        "secondary-fixed-dim": "#C9C4CE",
+                        "surface-tint": "#00A2C7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#F7F5F2",
+                        "on-primary-fixed": "#001F28",
+                        "on-surface-variant": "#53565A",
+                        "primary-fixed-dim": "#7FD9EF",
+                        "on-secondary-fixed-variant": "#3A2F63",
+                        "error-container": "#FCE4E7",
+                        "surface-container": "#F2F0EC",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#201747",
+                        "on-secondary-container": "#201747",
+                        "inverse-primary": "#7FD9EF",
+                        "surface-dim": "#E5E1E6",
+                        "on-primary-fixed-variant": "#00485A",
+                        "inverse-surface": "#201747",
+                        "tertiary": "#8A6D1F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header-height": "120px",
+                        "stack-gap": "16px",
+                        "container-margin": "20px",
+                        "inline-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "balance-display": ["Figtree"],
+                        "headline-lg": ["Figtree"],
+                        "eyebrow": ["Inter"],
+                        "numeric-table": ["Roboto Mono"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Figtree"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "balance-display": ["44px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
+                        "eyebrow": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "numeric-table": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ios-notch {
+            width: 150px;
+            height: 30px;
+            background-color: black;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+        .blur-backdrop {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-full bg-surface-container-lowest text-on-surface overflow-hidden flex items-center justify-center p-4">
+<!-- Mock iPhone Container -->
+<div class="relative w-full max-w-[390px] h-[844px] bg-black rounded-[40px] shadow-2xl overflow-hidden border-[8px] border-surface-container-high" data-alt="Abstract fluid background featuring deep navy blue and vibrant cyan colors. The design resembles flowing ink in water or soft, glowing digital waves. The lighting is ethereal and mysterious, creating a sophisticated and modern mobile wallpaper aesthetic with smooth gradients." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA35gNCGKjtJDPRxHnNws3ZHPK9V69D49nqxHDPFScDjH1uH35tpYhArCb1d2M8bbWYNizOuJsp3pw5QThzNtTWRNwOEN4pPu8j_8UpAGFYzj5hk8YSm493uS4-PQFcpmyL2tCsxYLPSiBS-KEGonVaJ6fL2F6cASNR43sVnbUY-FhtIQbMYMObAoaUEcw_R30fDVAI-DWK0r4-e2AbsgVAgzn7acPx1396r-HAnxeyZz-oEagTkxnf')">
+<!-- Hardware Notch -->
+<div class="ios-notch"></div>
+<!-- Status Bar area -->
+<div class="absolute top-0 w-full h-[44px] flex justify-between items-center px-6 pt-2 z-40 text-white text-xs font-medium">
+<span class="font-bold" id="clock">9:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">battery_full</span>
+</div>
+</div>
+<!-- Lock Screen Content -->
+<div class="absolute inset-0 pt-[100px] px-[8px] flex flex-col z-10">
+<!-- Lock Icon -->
+<div class="flex justify-center mb-2">
+<span class="material-symbols-outlined text-white text-3xl">lock</span>
+</div>
+<!-- Date and Time Header -->
+<div class="text-center text-white mb-8">
+<h2 class="text-xl font-medium tracking-wide">Tuesday, October 24</h2>
+<h1 class="text-7xl font-bold font-balance-display tracking-tight mt-1">9:41</h1>
+</div>
+<!-- Notifications Stack -->
+<div class="flex-1 mt-4 px-2 flex flex-col gap-2">
+<!-- Primary Notification (Active) -->
+<div class="bg-white/85 blur-backdrop rounded-[24px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.1)]">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[14px]">account_balance</span>
+</div>
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-wider">SoFi Pockets</span>
+</div>
+<span class="text-xs text-on-surface-variant">now</span>
+</div>
+<div class="mb-4">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-bold">At Trader Joe's?</span> Pay with your Groceries card — $74.12 available.
+                        </p>
+</div>
+<div class="flex flex-col gap-2">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary font-label-md text-label-md py-3 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined mr-2 text-[18px]">wallet</span>
+                            Open in Wallet
+                        </button>
+<button class="w-full bg-white border border-outline-variant hover:bg-surface-container-lowest text-on-surface font-label-md text-label-md py-3 rounded-full transition-colors flex items-center justify-center">
+                            Use a different pocket
+                        </button>
+</div>
+</div>
+<!-- Secondary Notification (Dimmer, Stacked) -->
+<div class="bg-white/60 blur-backdrop rounded-[24px] p-4 shadow-[0px_2px_10px_rgba(32,23,71,0.05)] scale-[0.98] origin-top opacity-80 -mt-1 z-0">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[14px]">account_balance</span>
+</div>
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-wider">SoFi Pockets</span>
+</div>
+<span class="text-xs text-on-surface-variant">2m ago</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">
+                            Chipotle $14.20 paid from Food. $2.00 back from Pocket Perks.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Bottom Camera/Flashlight (Standard iOS) -->
+<div class="pb-12 px-10 flex justify-between">
+<div class="w-12 h-12 rounded-full bg-black/40 blur-backdrop flex items-center justify-center">
+<span class="material-symbols-outlined text-white">flashlight_on</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-black/40 blur-backdrop flex items-center justify-center">
+<span class="material-symbols-outlined text-white">photo_camera</span>
+</div>
+</div>
+<!-- Home Indicator -->
+<div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white rounded-full"></div>
+</div>
+</div>
+<script>
+        // Simple script to update clock to current time for realism, though 9:41 is standard for mocks
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            const strTime = hours + ':' + minutes;
+            const clockEl = document.getElementById('clock');
+            if(clockEl) clockEl.innerText = strTime;
+        }
+        // updateClock(); // Uncomment to use real time instead of 9:41
+    </script>
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoFi Pockets - Move Money</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0;
+        }
+        /* Custom Sine Wave Line Background */
+        .bg-sine-wave {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 Q25 0 50 10 T100 10" stroke="%2300A2C7" stroke-width="1.5" fill="none"/></svg>');
+            background-repeat: repeat-x;
+            background-position: bottom;
+            padding-bottom: 24px;
+        }
+        /* Minimalist Scrollbar */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface h-screen w-screen overflow-hidden flex flex-col antialiased relative">
+<!-- Dimmed Background Content (Simulated) -->
+<div class="absolute inset-0 z-0 flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-primary font-headline-md text-headline-md font-black text-on-primary docked full-width top-0 h-[header-height] bg-primary flat no shadows flex justify-between items-center px-container-margin w-full">
+<div class="flex items-center gap-inline-gap">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md">SoFi Pockets</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20">
+<span class="material-symbols-outlined" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+</button>
+</header>
+<!-- Main Content Area (Dimmed by overlay) -->
+<main class="flex-1 px-container-margin py-stack-gap overflow-y-auto">
+<div class="mb-stack-gap bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-4 flex items-center justify-between opacity-50 pointer-events-none">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-xl">🍜</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Food</p>
+<p class="font-numeric-table text-numeric-table text-on-surface-variant">$128.40</p>
+</div>
+</div>
+</div>
+<div class="mb-stack-gap bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-4 flex items-center justify-between opacity-50 pointer-events-none">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-[#FFF3E0] flex items-center justify-center text-[#E65100] text-xl">🚌</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Transit</p>
+<p class="font-numeric-table text-numeric-table text-on-surface-variant">$18.50</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop, present but dimmed on mobile) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-low font-headline-md text-headline-md font-black text-primary docked full-width bottom-0 rounded-t-xl shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] shadow-lg fixed bottom-0 w-full z-10 flex justify-around items-center px-2 py-3 bg-surface-container-lowest opacity-50 pointer-events-none">
+<!-- Home (Active) -->
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<!-- Banking -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md">Banking</span>
+</div>
+<!-- Credit card -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
+<span class="font-label-md text-label-md">Credit card</span>
+</div>
+<!-- Invest -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-label-md">Invest</span>
+</div>
+<!-- Loans -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Loans</span>
+</div>
+</nav>
+</div>
+<!-- Modal Overlay -->
+<div class="absolute inset-0 z-40 bg-[#201747]/40 backdrop-blur-sm transition-opacity"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 left-0 right-0 z-50 bg-surface-container-lowest rounded-t-3xl shadow-[0px_-4px_24px_rgba(32,23,71,0.12)] flex flex-col transition-transform duration-300 transform translate-y-0 h-[751px] max-h-[800px]">
+<!-- Handle Bar -->
+<div class="w-full flex justify-center py-4 cursor-grab active:cursor-grabbing">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="px-container-margin pb-4 text-center relative">
+<h2 class="font-headline-md text-headline-md text-on-surface">Move money</h2>
+<button class="absolute right-container-margin top-0 w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest rounded-full">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto px-container-margin pb-stack-gap flex flex-col">
+<!-- Account Selection (From / To) -->
+<div class="relative bg-surface rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.04)] mb-8">
+<!-- From Row -->
+<div class="flex items-center justify-between pb-4 border-b border-surface-dim">
+<div class="flex items-center gap-inline-gap">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-lg">🍜</div>
+<div class="flex flex-col">
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-widest">From</span>
+<span class="font-label-md text-label-md text-on-surface">Food</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-table text-numeric-table text-on-surface-variant block">$128.40 available</span>
+<span class="material-symbols-outlined text-outline-variant text-sm align-middle" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Swap Button -->
+<button class="absolute left-8 top-1/2 -translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-surface-dim rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container-highest transition-colors z-10">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="swap_vert">swap_vert</span>
+</button>
+<!-- To Row -->
+<div class="flex items-center justify-between pt-4 pl-12">
+<div class="flex items-center gap-inline-gap">
+<div class="w-10 h-10 rounded-full bg-[#FFF3E0] flex items-center justify-center text-[#E65100] text-lg">🚌</div>
+<div class="flex flex-col">
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-widest">To</span>
+<span class="font-label-md text-label-md text-on-surface">Transit</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-table text-numeric-table text-on-surface-variant block">$18.50</span>
+<span class="material-symbols-outlined text-outline-variant text-sm align-middle" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Amount Input Area -->
+<div class="flex-1 flex flex-col items-center justify-center min-h-[160px]">
+<div class="flex items-baseline justify-center text-primary mb-2">
+<span class="font-balance-display text-balance-display mr-1">$</span>
+<span class="font-balance-display text-balance-display tracking-tight" id="amount-display">40.00</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Food will have $88.40 left</p>
+<!-- Quick Pills -->
+<div class="flex gap-2 mt-6">
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors">$10</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors">$20</button>
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary border border-transparent font-label-md text-label-md shadow-sm">$40</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors">All</button>
+</div>
+</div>
+<!-- Custom Keypad -->
+<div class="grid grid-cols-3 gap-2 mt-8 mb-6">
+<!-- Row 1 -->
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">1</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">2</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">3</button>
+<!-- Row 2 -->
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">4</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">5</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">6</button>
+<!-- Row 3 -->
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">7</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">8</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">9</button>
+<!-- Row 4 -->
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">.</button>
+<button class="py-4 text-center font-numeric-table text-headline-md text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">0</button>
+<button class="py-4 flex items-center justify-center text-on-surface hover:bg-surface-container-highest rounded-xl transition-colors">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Primary Action -->
+<div class="mt-auto pt-4 border-t border-surface-dim bg-surface-container-lowest sticky bottom-0">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-headline-md text-headline-md font-bold shadow-sm hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span>Move</span>
+<span class="font-numeric-table">$40.00</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

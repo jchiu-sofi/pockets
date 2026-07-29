@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Card Details - Food Pocket</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F",
+                      
+                      // Semantic brand colors mapped from JSON
+                      "ink": "#201747",
+                      "taupe": "#AB989D",
+                      "cyan": "#00A2C7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": ["Figtree"],
+                      "headline-lg": ["Figtree"],
+                      "eyebrow": ["Inter"],
+                      "numeric-table": ["Roboto Mono"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Figtree"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "balance-display": ["44px", {"lineHeight": "44px", "fontWeight": "800"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "800"}],
+                      "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "numeric-table": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .sine-wave-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q 25 5, 50 20 T 100 20 T 150 20 T 200 20' fill='none' stroke='%2300A2C7' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-position: top right;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #00A2C7;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #00A2C7;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 50px;
+            height: 28px;
+            background-color: #E5E1E6;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background min-h-screen text-on-surface antialiased pb-24 md:pb-0">
+<!-- Top App Bar Navigation Shell -->
+<header class="bg-primary dark:bg-primary flex justify-between items-center px-container-margin w-full docked full-width top-0 h-[header-height] flat no shadows sticky z-50 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] md:shadow-none">
+<div class="flex items-center gap-inline-gap">
+<button class="text-on-primary hover:opacity-80 transition-opacity duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black text-on-primary tracking-tight">SoFi Pockets</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-on-primary/20">
+<span class="material-symbols-outlined text-on-primary-fixed">person</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="w-full max-w-md mx-auto md:max-w-2xl px-container-margin pt-stack-gap">
+<!-- Ink Background Panel for Card -->
+<div class="bg-ink rounded-[20px] p-6 relative overflow-hidden shadow-lg mb-8">
+<!-- Sine Wave Motif -->
+<div class="absolute top-0 right-0 w-48 h-24 sine-wave-bg opacity-50 transform rotate-12 scale-150 -translate-y-4 translate-x-8"></div>
+<div class="relative z-10 flex flex-col items-center">
+<!-- Virtual Card Representation -->
+<div class="w-full max-w-[340px] h-[214px] bg-primary-container rounded-[16px] p-6 text-on-primary-container shadow-[0px_8px_24px_rgba(0,0,0,0.2)] flex flex-col justify-between relative overflow-hidden border border-white/20">
+<!-- Card Shine Effect -->
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent pointer-events-none rounded-[16px]"></div>
+<div class="flex justify-between items-start">
+<span class="font-eyebrow text-eyebrow bg-on-primary-container/10 px-2 py-1 rounded-full uppercase">Virtual</span>
+<span class="font-headline-md text-headline-md font-bold">Food</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-numeric-table text-numeric-table text-lg tracking-widest font-bold">4417 8802 3391 0264</span>
+<button aria-label="Copy card number" class="hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex flex-col">
+<span class="font-eyebrow text-eyebrow opacity-80 uppercase">Sammy Chen</span>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-start">
+<span class="font-eyebrow text-[9px] opacity-70 uppercase leading-none">EXP</span>
+<span class="font-numeric-table text-numeric-table text-sm">09/29</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-eyebrow text-[9px] opacity-70 uppercase leading-none">CVV</span>
+<span class="font-numeric-table text-numeric-table text-sm">481</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Apple Wallet Button -->
+<button class="w-full mt-6 bg-black text-white font-label-md text-label-md font-semibold py-4 px-6 rounded-full flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors shadow-md">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+</svg>
+                    Add to Apple Wallet
+                </button>
+</div>
+</div>
+<!-- Settings List -->
+<div class="bg-surface-container-lowest rounded-[20px] shadow-[0px_4px_20px_rgba(32,23,71,0.06)] overflow-hidden mb-6 flex flex-col divide-y divide-surface-container">
+<!-- Set as Wallet Default -->
+<div class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Set as Wallet default</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="wallet_default" name="wallet_default" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-7 rounded-full bg-gray-300 cursor-pointer" for="wallet_default"></label>
+</div>
+</div>
+<!-- Freeze Card -->
+<div class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">ac_unit</span>
+<span class="font-body-md text-body-md text-on-surface">Freeze card</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="freeze_card" name="freeze_card" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-7 rounded-full bg-gray-300 cursor-pointer" for="freeze_card"></label>
+</div>
+</div>
+<!-- Get a new number -->
+<button class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors text-left w-full focus:outline-none">
+<span class="font-body-md text-body-md text-on-surface">Get a new number</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<!-- Spending limits -->
+<button class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors text-left w-full focus:outline-none">
+<span class="font-body-md text-body-md text-on-surface">Spending limits</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<!-- Transaction notifications -->
+<div class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Transaction notifications</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="notifications" name="notifications" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-7 rounded-full bg-gray-300 cursor-pointer" for="notifications"></label>
+</div>
+</div>
+</div>
+<!-- Footnote -->
+<p class="font-body-md text-[13px] text-taupe text-center px-4 leading-relaxed mb-8">
+            This card only spends from your Food pocket. It declines if the pocket is empty.
+        </p>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-label-md text-[10px] font-semibold">Banking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">credit_card</span>
+<span class="font-label-md text-[10px]">Credit card</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="font-label-md text-[10px]">Invest</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="font-label-md text-[10px]">Loans</span>
+</a>
+</nav>
+</body></html>

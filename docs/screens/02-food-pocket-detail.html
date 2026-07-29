@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Food Pocket Detail</title>
+<!-- Google Fonts: JetBrains Mono and Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#201747",
+                        "primary": "#00A2C7",
+                        "inverse-on-surface": "#F7F5F2",
+                        "background": "#F7F5F2",
+                        "on-primary-fixed": "#001F28",
+                        "secondary-container": "#E5E1E6",
+                        "on-secondary-fixed-variant": "#3A2F63",
+                        "surface-container-highest": "#E5E1E6",
+                        "inverse-surface": "#201747",
+                        "tertiary-container": "#FEEFC7",
+                        "secondary-fixed-dim": "#C9C4CE",
+                        "surface-bright": "#FFFFFF",
+                        "surface-container-high": "#ECE9E4",
+                        "on-primary-fixed-variant": "#00485A",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#D9D5D0",
+                        "surface-variant": "#E9E6E1",
+                        "tertiary-fixed-dim": "#F5C95F",
+                        "error": "#E03E52",
+                        "error-container": "#FCE4E7",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#E5E1E6",
+                        "tertiary": "#8A6D1F",
+                        "surface-dim": "#E5E1E6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#4A3A0A",
+                        "on-surface-variant": "#53565A",
+                        "on-error-container": "#7A0C1B",
+                        "on-tertiary-fixed": "#3A2C00",
+                        "on-error": "#ffffff",
+                        "secondary": "#201747",
+                        "surface": "#F7F5F2",
+                        "outline": "#8A8D91",
+                        "on-secondary-container": "#201747",
+                        "on-surface": "#201747",
+                        "surface-tint": "#00A2C7",
+                        "on-tertiary-fixed-variant": "#5C4708",
+                        "on-background": "#201747",
+                        "tertiary-fixed": "#FED880",
+                        "primary-fixed": "#CFEFF8",
+                        "inverse-primary": "#7FD9EF",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#00485A",
+                        "surface-container-low": "#FBFAF8",
+                        "primary-container": "#E3F4FA",
+                        "surface-container": "#F2F0EC",
+                        "primary-fixed-dim": "#7FD9EF"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "container-margin": "20px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "data-display": ["JetBrains Mono"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "data-cents": ["JetBrains Mono"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "eyebrow": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "data-display": ["28px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "data-cents": ["16.8px", { lineHeight: "1", fontWeight: "600" }], /* 0.6em of 28px */
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "eyebrow": ["11px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Sine Wave Pattern */
+        .sine-wave-bg {
+            background-color: #00a2c7;
+            background-image: repeating-radial-gradient(
+                circle at 0 0, 
+                transparent 0, 
+                #00a2c7 10px, 
+                #0096b8 10px, 
+                #0096b8 11px
+            );
+            background-size: 30px 30px;
+        }
+
+        /* Toggle Switch Custom CSS */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #00A2C7;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #00A2C7;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-lg text-body-lg text-on-surface antialiased pb-24">
+<!-- Header Block (Cyan) -->
+<header class="bg-primary-container text-on-primary-container pt-12 pb-10 px-container-margin relative overflow-hidden rounded-b-[32px]">
+<!-- Watermark/Texture overlay -->
+<div class="absolute inset-0 opacity-10 sine-wave-bg"></div>
+<!-- Top Nav within Header -->
+<div class="relative z-10 flex items-center justify-between mb-8">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-tight flex items-center gap-2">
+<span>🍜</span> Food
+            </h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Central Amount -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="flex items-start justify-center">
+<span class="font-data-display text-data-display text-surface-container-lowest tracking-tight">$128</span>
+<span class="font-data-cents text-data-cents text-surface-container-lowest mt-1">.40</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-container-lowest/80 mt-1">of $300 this month</p>
+<!-- Progress Bar -->
+<div class="w-48 h-1.5 bg-on-primary-container/20 rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-surface-container-lowest rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Pill Buttons -->
+<div class="relative z-10 flex justify-center gap-3 mt-8">
+<button class="bg-surface-container-lowest text-primary-container font-body-sm text-body-sm font-semibold py-2.5 px-5 rounded-full flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform hover:bg-surface-container-lowest/90">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Add money
+            </button>
+<button class="bg-surface-container-lowest text-primary-container font-body-sm text-body-sm font-semibold py-2.5 px-5 rounded-full flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform hover:bg-surface-container-lowest/90">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+                Move money
+            </button>
+</div>
+</header>
+<!-- Main Content - Pockets Grid -->
+<main class="px-container-margin -mt-4 relative z-20 space-y-stack-lg">
+<!-- Virtual Debit Card Container -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.08)] p-stack-md">
+<!-- Realistic Virtual Card Render -->
+<div class="w-full aspect-[1.58/1] bg-primary-container rounded-xl p-5 flex flex-col justify-between relative overflow-hidden text-surface-container-lowest shadow-inner">
+<div class="absolute inset-0 opacity-20 sine-wave-bg"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+<div class="relative z-10 flex justify-between items-start">
+<span class="font-headline-md text-headline-md font-extrabold tracking-tighter">SoFi</span>
+<span class="font-eyebrow text-eyebrow bg-black/20 px-2 py-1 rounded backdrop-blur-sm">VIRTUAL</span>
+</div>
+<div class="relative z-10">
+<p class="font-eyebrow text-eyebrow mb-1 opacity-90 tracking-widest uppercase">Food</p>
+<p class="font-data-display text-data-display text-[20px] tracking-[0.2em]">•••• 4417</p>
+</div>
+</div>
+<!-- Apple Wallet Button -->
+<button class="w-full bg-[#000000] text-white rounded-full py-3.5 mt-stack-md flex items-center justify-center gap-2 font-body-sm text-body-sm font-semibold active:scale-95 transition-transform">
+<svg class="text-white" fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M14.7797 2.05267C15.6883 0.942706 17.159 0.222223 18.7301 0C18.9038 1.6322 18.2575 3.32766 17.2796 4.49845C16.3683 5.58661 14.8055 6.34771 13.2504 6.20816C12.9877 4.50201 13.8055 2.92348 14.7797 2.05267ZM18.7306 18.955C18.6833 19.0911 17.0691 24.1611 13.5684 24.1611C11.666 24.1611 11.2334 22.9552 8.78496 22.9552C6.38615 22.9552 5.76634 24.1098 4.14816 24.1611C0.774906 24.269 0 19.1419 0 16.7118C0 11.8344 2.87103 9.4754 5.92248 9.4754C7.81057 9.4754 9.1762 10.597 10.3707 10.597C11.5979 10.597 13.218 9.29749 15.5398 9.38711C16.7455 9.42942 19.006 9.87053 20.3734 11.9689C17.3875 13.7915 17.9254 18.0673 20.9328 19.3496C20.4079 20.6974 19.6465 21.8492 18.7306 18.955Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+                Add to Apple Wallet
+            </button>
+<!-- Card Actions -->
+<div class="flex gap-4 mt-stack-md pt-stack-md border-t border-surface-container-highest">
+<button class="flex-1 flex flex-col items-center justify-center gap-1.5 p-2 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<span class="font-body-sm text-body-sm font-semibold">Card details</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center gap-1.5 p-2 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined text-primary">ac_unit</span>
+<span class="font-body-sm text-body-sm font-semibold">Freeze card</span>
+</button>
+</div>
+</section>
+<!-- Auto-Fund Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.08)] p-stack-md">
+<h2 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">Auto-Fund</h2>
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1">
+<p class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight">Every deposit, fill this pocket with $300</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80 mt-1">Next: Aug 15 financial aid</p>
+</div>
+<!-- Toggle Switch -->
+<div class="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out border-primary" id="toggle" name="toggle" style="top: 2px; right: 2px;" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-7 rounded-full bg-primary cursor-pointer transition-colors duration-200 ease-in-out" for="toggle"></label>
+</div>
+</div>
+</section>
+<!-- Transactions Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.08)] p-stack-md">
+<h2 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">This Month</h2>
+<div class="space-y-4">
+<!-- Transaction Item 1 -->
+<div class="flex items-center justify-between group cursor-pointer hover:bg-surface p-2 -mx-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0" data-alt="A minimalist flat-design vector logo of a stylized chili pepper on a pale terracotta background, suitable for a fast-casual Mexican restaurant, clean geometric lines, soft light-mode aesthetic, corporate modern style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBb3iqw2T_8sCRVucpZae0odMdrIAinXicB7P5zSEeodBhmJjA0QPoKyipaTq0SJU5Ee3P3zwLFvMT4NXoAVGCJHaM2dW4auVpJcHqG36MmyqXce5ANT8MWMRXSJu8xrlzwu_ET5r8rXLi9lOYg0LtTb3lciblmX5YrnaOpC7Su_GirlnBMkgWaV5uSkJC15N9nDZBbAxU2yJO3Dla8BvXXvPw8TjyvHRaI3mr4B2UAyRaGcjhB_NWC')"></div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Chipotle</p>
+<div class="flex items-center gap-2 mt-0.5">
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Jul 27</p>
+<span class="bg-primary-container/15 text-primary font-eyebrow text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider font-bold">$2 back earned</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$14.<span class="text-[10px]">20</span></p>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="flex items-center justify-between group cursor-pointer hover:bg-surface p-2 -mx-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0" data-alt="A minimalist flat-design vector logo of a stylized green leaf bowl on a pale sage green background, suitable for a healthy salad restaurant, clean geometric lines, soft light-mode aesthetic, corporate modern style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD--AWO_Zzhl_7xWwF9eY7Yk1nq6bIM9FFaXmyHV1q5QV2_eNt0oAwiSZE_wAFnCAThxH4ZGOizZl48bh7o-Qf1GcrCwRpmXmQFu0ZZxuxqidZfYpts4pvUO2Ov9AoOAddvS8hh6NDhXd-dDEcChXFWHDaXBQ9AYtoC8VMvLUyyLT9gFvZXkh7FaCUS7SBspKEcLHQaZSRYO8zHlYozAGgQOmFOIWWH474V5QWo_67mR4cTBq6xrKEK')"></div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Sweetgreen</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] mt-0.5">Jul 26</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$16.<span class="text-[10px]">85</span></p>
+</div>
+</div>
+<!-- Transaction Item 3 -->
+<div class="flex items-center justify-between group cursor-pointer hover:bg-surface p-2 -mx-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Dining Hall Add-On</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] mt-0.5">Jul 24</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$45.<span class="text-[10px]">00</span></p>
+</div>
+</div>
+<!-- Transaction Item 4 -->
+<div class="flex items-center justify-between group cursor-pointer hover:bg-surface p-2 -mx-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0" data-alt="A minimalist flat-design vector logo of a stylized red panda face on a pale crimson background, suitable for an Asian fast-food restaurant, clean geometric lines, soft light-mode aesthetic, corporate modern style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9cOE_2BUSC8heR5xwO2HVeZer2xf4T_pylhZ6v7yrBMhm-QnCSBgWo0vJo7JlAoWObDe4vJei7h20BeP4bbB7MajehKbv2JJ-fKDQCeSTCQ_Up_tXl3IqNve1MXws00YnNQ_34dTIan-FTD5jt4rpXqtwP57ao_PcbZTpYS4Ep0kBa-HMlYhV0xUfT_N4Qd_UOK-3FFTYHOJJbFJKmmoJ6No9Puax0PBbbuvdhshpFpHht3GhG7IM')"></div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Panda Express</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] mt-0.5">Jul 22</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$11.<span class="text-[10px]">75</span></p>
+</div>
+</div>
+</div>
+<button class="w-full text-center mt-6 pt-4 border-t border-surface-container-highest">
+<span class="font-body-sm text-body-sm font-semibold text-primary hover:text-primary-container transition-colors">See all</span>
+</button>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Rendered as Requested) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 rounded-t-none bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.08)] flex justify-around items-center py-2 px-2 pb-safe">
+<!-- Tab: Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-high active:scale-90 transition-all duration-200 p-2 rounded-lg w-16">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-[11px]">Home</span>
+</button>
+<!-- Tab: Banking (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-primary font-body-sm text-body-sm font-bold hover:bg-surface-container-high active:scale-90 transition-all duration-200 p-2 rounded-lg w-16">
+<span class="material-symbols-outlined mb-1" data-weight="fill">account_balance</span>
+<span class="text-[11px]">Banking</span>
+</button>
+<!-- Tab: Credit Card -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-high active:scale-90 transition-all duration-200 p-2 rounded-lg w-16">
+<span class="material-symbols-outlined mb-1">credit_card</span>
+<span class="text-[11px]">Credit Card</span>
+</button>
+<!-- Tab: Invest -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-high active:scale-90 transition-all duration-200 p-2 rounded-lg w-16">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="text-[11px]">Invest</span>
+</button>
+<!-- Tab: Loans -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-high active:scale-90 transition-all duration-200 p-2 rounded-lg w-16">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="text-[11px]">Loans</span>
+</button>
+</nav>
+<!-- Safe area padding for bottom nav on mobile devices -->
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+    </style>
+</body></html>

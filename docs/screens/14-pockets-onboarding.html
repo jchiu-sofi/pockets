@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pockets Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+<!-- Top 2/3: SoFi Blue Panel -->
+<main class="flex-grow flex flex-col">
+<section class="bg-primary flex-grow flex flex-col relative overflow-hidden px-container-margin pt-12 pb-16">
+<!-- Background Image / Collage -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-80" data-alt="A sophisticated 3D digital illustration in a light-mode corporate modern aesthetic. The central subject is an oversized, shiny chrome credit card dramatically splitting into multiple smaller, brightly colored cards. These smaller cards float dynamically in mid-air alongside metallic, reflective spheres. The background features a smooth, glowing cyan gradient, anchoring the composition. The lighting is bright, soft, and highly polished, conveying a clean, modern, and energetic financial technology vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKvohJRbxDGJY9hiA1_Rv2olp5QE73hy_n_mOq0uyTnrNjXRI3bjduqb9gdVbU350nN6V43DSo-kHiA0ViwkGrppDq2U2LV7l7BFKSaUzr_jk1AwBBv25vFVD2c4fe8r7CxTtBmgR_da5SKRgJsgMupQzrpX5N0pR75yCBaHmb0o8tooamQwjCnekqHHrM-VgKynY5oBxRef82ycZdXM1tUT0tzFNxnR9_yoU571U6rOVcclfVHpEB"/>
+</div>
+<!-- Content overlay -->
+<div class="relative z-10 flex flex-col justify-end flex-grow">
+<h1 class="font-headline-lg text-headline-lg text-on-primary mb-4 w-[280px]">
+                    One checking account. As many pockets as you need.
+                </h1>
+<p class="font-body-md text-body-md text-on-primary opacity-90 w-[260px]">
+                    Give every dollar a job, and a card that only spends it there.
+                </p>
+</div>
+</section>
+<!-- Bottom 1/3: White Sheet -->
+<section class="bg-surface-container-lowest rounded-t-[32px] -mt-8 relative z-20 px-container-margin pt-8 pb-10 flex flex-col gap-8 shadow-[0px_-4px_20px_rgba(32,23,71,0.06)]">
+<!-- Icon Rows -->
+<div class="flex flex-col gap-6">
+<!-- Row 1 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim bg-opacity-20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">A virtual card per pocket</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Keep your main card safe, spend securely.</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim bg-opacity-20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">Share a pocket with roommates</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Easily split rent and utilities together.</p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim bg-opacity-20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined">loyalty</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">Earn partner perks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Get rewards where you shop the most.</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md font-bold py-4 rounded-full shadow-md active:scale-95 transition-transform">
+                    Set up my pockets
+                </button>
+<button class="w-full text-primary font-label-md text-label-md font-medium py-3 active:opacity-70 transition-opacity">
+                    Maybe later
+                </button>
+</div>
+</section>
+</main>
+</body></html>

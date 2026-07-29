@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoFi Pockets — screens</title>
+<style>
+  :root { --ink:#201747; --blue:#00A2C7; --gray:#E5E1E6; --taupe:#AB989D; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 32px 64px; background:var(--ink); color:#fff;
+         font:15px/1.5 Inter, -apple-system, system-ui, sans-serif; }
+  header { max-width:900px; margin:0 0 36px; }
+  .eyebrow { font-size:11px; font-weight:600; letter-spacing:.08em;
+             text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
+  h1 { font-size:30px; font-weight:800; margin:0 0 10px; letter-spacing:-.01em; }
+  p  { color:var(--gray); margin:0 0 6px; max-width:70ch; }
+  .hint { color:var(--taupe); font-size:13px; }
+  .grid { display:grid; gap:28px;
+          grid-template-columns:repeat(auto-fill, minmax(390px, 1fr)); }
+  figure { margin:0; }
+  .phone { position:relative; width:390px; height:844px; border-radius:22px;
+           overflow:hidden; background:#fff; box-shadow:0 12px 32px rgba(0,0,0,.4); }
+  iframe { width:390px; height:844px; border:0; display:block; }
+  figcaption { margin-top:10px; display:flex; align-items:baseline; gap:8px; }
+  .num { font:500 12px/1 "Roboto Mono", monospace; color:var(--taupe); }
+  .name { font-weight:600; }
+  a.open { margin-left:auto; font-size:12px; color:var(--blue); text-decoration:none; }
+  a.open:hover { text-decoration:underline; }
+</style>
+<header>
+  <div class="eyebrow">SoFi Pockets · UI mockups</div>
+  <h1>Spendable pockets in checking, shared with roommates</h1>
+  <p>Generated in Google Stitch, pulled down as editable HTML. Each frame below is
+     live — scroll inside it to see the whole screen, or open it full size.</p>
+  <p class="hint">Design decisions, open issues, and legal edge cases live in
+     <code>decisions.md</code>. Screen prompts live in <code>stitch-prompt.md</code>.</p>
+</header>
+<div class="grid">
+<figure><div class="phone"><iframe src="screens/01-pockets-home.html" loading="lazy" title="pockets home"></iframe></div><figcaption><span class="num">01</span><span class="name">pockets home</span><a class="open" href="screens/01-pockets-home.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/02-food-pocket-detail.html" loading="lazy" title="food pocket detail"></iframe></div><figcaption><span class="num">02</span><span class="name">food pocket detail</span><a class="open" href="screens/02-food-pocket-detail.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/03-transit-low-balance.html" loading="lazy" title="transit low balance"></iframe></div><figcaption><span class="num">03</span><span class="name">transit low balance</span><a class="open" href="screens/03-transit-low-balance.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/04-create-a-pocket.html" loading="lazy" title="create a pocket"></iframe></div><figcaption><span class="num">04</span><span class="name">create a pocket</span><a class="open" href="screens/04-create-a-pocket.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/05-rent-shared-pocket.html" loading="lazy" title="rent shared pocket"></iframe></div><figcaption><span class="num">05</span><span class="name">rent shared pocket</span><a class="open" href="screens/05-rent-shared-pocket.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/06-invite-friends.html" loading="lazy" title="invite friends"></iframe></div><figcaption><span class="num">06</span><span class="name">invite friends</span><a class="open" href="screens/06-invite-friends.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/07-invite-received.html" loading="lazy" title="invite received"></iframe></div><figcaption><span class="num">07</span><span class="name">invite received</span><a class="open" href="screens/07-invite-received.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/08-card-details-wallet.html" loading="lazy" title="card details wallet"></iframe></div><figcaption><span class="num">08</span><span class="name">card details wallet</span><a class="open" href="screens/08-card-details-wallet.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/09-lock-screen-notif.html" loading="lazy" title="lock screen notif"></iframe></div><figcaption><span class="num">09</span><span class="name">lock screen notif</span><a class="open" href="screens/09-lock-screen-notif.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/10-transaction-reroute.html" loading="lazy" title="transaction reroute"></iframe></div><figcaption><span class="num">10</span><span class="name">transaction reroute</span><a class="open" href="screens/10-transaction-reroute.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/11-pocket-perks.html" loading="lazy" title="pocket perks"></iframe></div><figcaption><span class="num">11</span><span class="name">pocket perks</span><a class="open" href="screens/11-pocket-perks.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/12-move-money.html" loading="lazy" title="move money"></iframe></div><figcaption><span class="num">12</span><span class="name">move money</span><a class="open" href="screens/12-move-money.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/13-semester-runway.html" loading="lazy" title="semester runway"></iframe></div><figcaption><span class="num">13</span><span class="name">semester runway</span><a class="open" href="screens/13-semester-runway.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/14-pockets-onboarding.html" loading="lazy" title="pockets onboarding"></iframe></div><figcaption><span class="num">14</span><span class="name">pockets onboarding</span><a class="open" href="screens/14-pockets-onboarding.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/15-pockets-home-alt.html" loading="lazy" title="pockets home alt"></iframe></div><figcaption><span class="num">15</span><span class="name">pockets home alt</span><a class="open" href="screens/15-pockets-home-alt.html" target="_blank">open &rarr;</a></figcaption></figure>
+<figure><div class="phone"><iframe src="screens/16-food-detail-alt.html" loading="lazy" title="food detail alt"></iframe></div><figcaption><span class="num">16</span><span class="name">food detail alt</span><a class="open" href="screens/16-food-detail-alt.html" target="_blank">open &rarr;</a></figcaption></figure>
+</div>

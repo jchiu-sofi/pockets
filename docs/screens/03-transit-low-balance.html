@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Transit Pocket - Low Balance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#201747",
+                        "on-tertiary-fixed-variant": "#5C4708",
+                        "primary": "#00A2C7",
+                        "primary-fixed": "#CFEFF8",
+                        "tertiary-fixed": "#FED880",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#FEEFC7",
+                        "on-error-container": "#7A0C1B",
+                        "outline": "#8A8D91",
+                        "outline-variant": "#D9D5D0",
+                        "on-secondary-fixed": "#201747",
+                        "error": "#E03E52",
+                        "tertiary-fixed-dim": "#F5C95F",
+                        "surface-bright": "#FFFFFF",
+                        "on-tertiary-fixed": "#3A2C00",
+                        "background": "#F7F5F2",
+                        "on-tertiary-container": "#4A3A0A",
+                        "secondary-container": "#E5E1E6",
+                        "surface-container-highest": "#E5E1E6",
+                        "inverse-on-surface": "#F7F5F2",
+                        "primary-container": "#E3F4FA",
+                        "on-primary-container": "#00485A",
+                        "secondary-fixed": "#E5E1E6",
+                        "surface-container-high": "#ECE9E4",
+                        "surface-variant": "#E9E6E1",
+                        "surface-container-low": "#FBFAF8",
+                        "on-background": "#201747",
+                        "secondary-fixed-dim": "#C9C4CE",
+                        "surface-tint": "#00A2C7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#F7F5F2",
+                        "on-primary-fixed": "#001F28",
+                        "on-surface-variant": "#53565A",
+                        "primary-fixed-dim": "#7FD9EF",
+                        "on-secondary-fixed-variant": "#3A2F63",
+                        "error-container": "#FCE4E7",
+                        "surface-container": "#F2F0EC",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#201747",
+                        "on-secondary-container": "#201747",
+                        "inverse-primary": "#7FD9EF",
+                        "surface-dim": "#E5E1E6",
+                        "on-primary-fixed-variant": "#00485A",
+                        "inverse-surface": "#201747",
+                        "tertiary": "#8A6D1F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header-height": "120px",
+                        "stack-gap": "16px",
+                        "container-margin": "20px",
+                        "inline-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "balance-display": ["Figtree"],
+                        "headline-lg": ["Figtree"],
+                        "eyebrow": ["Inter"],
+                        "numeric-table": ["Roboto Mono"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Figtree"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "balance-display": ["44px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
+                        "eyebrow": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "numeric-table": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .symbol-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased pb-24 md:pb-0 hide-scrollbar overflow-x-hidden w-full h-full min-h-screen">
+<!-- Top Navigation (Web) -->
+<header class="hidden md:flex bg-primary text-on-primary font-headline-md text-headline-md docked full-width top-0 h-[header-height] flat no shadows transition-opacity duration-200 justify-between items-center px-container-margin w-full fixed z-50">
+<div class="flex items-center gap-inline-gap hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined text-[28px]" data-icon="menu">menu</span>
+</div>
+<div class="font-headline-md text-headline-md font-black text-on-primary tracking-tight">SoFi Pockets</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+</header>
+<main class="md:pt-[header-height] md:max-w-3xl mx-auto w-full pb-20">
+<!-- Header Block (Mobile Sticky) -->
+<div class="bg-tertiary-fixed text-on-tertiary-fixed pt-12 pb-6 px-container-margin rounded-b-[32px] md:rounded-3xl md:mt-6 shadow-sm sticky top-0 z-40 md:relative md:top-auto">
+<div class="flex justify-between items-center mb-8">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-center flex-1">🚌 Transit</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<div class="flex flex-col items-center justify-center space-y-2 mb-6">
+<div class="font-balance-display text-balance-display">$18.50</div>
+<div class="font-body-md text-body-md opacity-70">of $80.00 goal</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-lowest/40 rounded-full h-1.5 mb-2 overflow-hidden">
+<div class="bg-surface-container-lowest h-1.5 rounded-full" style="width: 23%"></div>
+</div>
+</div>
+<!-- Warning Banner -->
+<div class="px-container-margin mt-stack-gap md:-mt-4 relative z-30">
+<div class="bg-[#FFF8E1] border border-[#FFD54F] rounded-xl p-4 shadow-sm flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+<div class="flex items-start gap-3 flex-1">
+<span class="material-symbols-outlined text-[#F57F17] symbol-fill mt-0.5" data-icon="warning">warning</span>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-[#F57F17]">Running low</h3>
+<p class="font-body-md text-sm text-[#F57F17] mt-1 leading-snug">Cards decline when a pocket is empty — pockets never borrow from each other.</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full whitespace-nowrap hover:opacity-90 transition-opacity w-full sm:w-auto shadow-sm">
+                    Add money
+                </button>
+</div>
+</div>
+<div class="px-container-margin mt-stack-gap space-y-stack-gap pb-8">
+<!-- Virtual Card -->
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-5">
+<div class="bg-tertiary-fixed rounded-xl p-5 relative overflow-hidden h-40 flex flex-col justify-between shadow-inner border border-outline-variant/30">
+<!-- Sine wave subtle graphic -->
+<svg class="absolute bottom-0 left-0 w-full opacity-10" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0,10 Q25,20 50,10 T100,10 L100,20 L0,20 Z" fill="#00A2C7"></path>
+</svg>
+<div class="flex justify-between items-start relative z-10">
+<div class="font-eyebrow text-eyebrow text-on-tertiary-fixed tracking-wider">TRANSIT</div>
+<div class="font-eyebrow text-eyebrow bg-surface-container-lowest/50 text-on-surface px-2 py-1 rounded-md backdrop-blur-sm">VIRTUAL</div>
+</div>
+<div class="font-numeric-table text-numeric-table text-on-tertiary-fixed tracking-widest relative z-10 mt-auto text-lg">
+                        •••• •••• •••• 5521
+                    </div>
+</div>
+<button class="w-full bg-[#000000] text-[#FFFFFF] font-label-md text-label-md py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+                    Add to Apple Wallet
+                </button>
+</section>
+<!-- Auto Fund Toggle -->
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex justify-between items-center">
+<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider">AUTO-FUND</div>
+<div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-lowest border-4 border-primary appearance-none cursor-pointer z-10 top-0 left-0 transition-transform duration-300 transform translate-x-6 checked:border-primary checked:bg-surface-container-lowest" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle1"></label>
+</div>
+</section>
+<!-- Transactions List -->
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider mb-4 border-b border-surface-container-highest pb-2">THIS MONTH</div>
+<div class="space-y-4">
+<!-- Transaction 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-xl">🚇</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">MTA NYCT Paygo</div>
+<div class="font-body-md text-sm text-on-surface-variant">Today</div>
+</div>
+</div>
+<div class="font-numeric-table text-numeric-table text-on-surface">-$2.90</div>
+</div>
+<!-- Transaction 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-xl">🚇</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">MTA NYCT Paygo</div>
+<div class="font-body-md text-sm text-on-surface-variant">Yesterday</div>
+</div>
+</div>
+<div class="font-numeric-table text-numeric-table text-on-surface">-$2.90</div>
+</div>
+<!-- Transaction 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-xl">🚌</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">NJ Transit</div>
+<div class="font-body-md text-sm text-on-surface-variant">Sep 15</div>
+</div>
+</div>
+<div class="font-numeric-table text-numeric-table text-on-surface">-$12.50</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 border border-outline-variant rounded-full font-label-md text-label-md text-primary hover:bg-surface-container-lowest/50 transition-colors">
+                    View all transactions
+                </button>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden bg-surface-container-lowest text-primary font-label-md text-label-md docked full-width bottom-0 rounded-t-xl shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] shadow-lg fixed w-full z-50 flex justify-around items-center px-2 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high scale-95 active:scale-90 transition-transform min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1 symbol-fill" data-icon="account_balance">account_balance</span>
+<span class="text-[10px] font-semibold">Banking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
+<span class="text-[10px]">Credit card</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
+<span class="text-[10px]">Invest</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span class="text-[10px]">Loans</span>
+</a>
+</nav>
+<style>
+        /* Custom toggle switch CSS since standard Tailwind form plugin might not cover this specific look perfectly without extra classes */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary');
+        }
+        .toggle-checkbox {
+            transition: all 0.3s ease;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 12px);
+        }
+    </style>
+</body></html>

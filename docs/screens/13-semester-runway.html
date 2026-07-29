@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Semester Runway Budget</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .sine-wave {
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 T250,10 T300,10 T350,10 T400,10 T450,10 T500,10 T550,10 T600,10 T650,10 T700,10 T750,10 T800,10' fill='none' stroke='%2300A2C7' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-position: bottom;
+            height: 20px;
+            width: 100%;
+            display: block;
+            margin-top: 24px;
+        }
+        .chart-container {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            margin-top: 16px;
+        }
+        .line-target {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            right: 0;
+            bottom: 80%;
+            border-bottom: 2px dashed #AB989D;
+            transform: rotate(10deg);
+            transform-origin: left;
+        }
+        .line-actual {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            border-top: 4px solid #E03E52;
+            border-right: 4px solid #E03E52;
+            border-top-right-radius: 20px;
+            transform: rotate(5deg);
+            transform-origin: left;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md pb-24 md:pb-0">
+<header class="bg-primary dark:bg-primary text-on-primary dark:text-on-primary font-headline-md text-headline-md docked full-width top-0 h-[header-height] flat no shadows transition-opacity duration-200 flex justify-between items-center px-container-margin w-full fixed z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-80" data-icon="menu">menu</span>
+<span class="font-headline-md text-headline-md font-black text-on-primary">SoFi Pockets</span>
+</div>
+<div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden cursor-pointer hover:opacity-80">
+<img class="w-full h-full object-cover" data-alt="A detailed 50-100 word prompt... A small, generic user profile avatar placeholder image. Soft, neutral lighting. Light mode aesthetic. Minimalist and corporate modern. Deep blacks, pristine whites, vibrant red accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs6pRyTa2AAgjilsAYi8p5acRZj59EIp65BYsspmVx-qbgS9hB8d0ftF1E4GA4SchJEHEU4cUvKMmcW80rsvn97terAixjlmkkJq674OHTPCfRliOW8eKkgWMWuRKC8H-k9q7rhKeX3gw39o2GhgG1m26bizoVtwds-2Uyj56ZPN-WxRvtLuBNRYyHGMXCqQliVLmOAhphGB9-zZ996M8NwraakwgVSWrE3G-Ge2q5MEL0QLPKpdTQ"/>
+</div>
+</div>
+</header>
+<main class="pt-[140px] px-container-margin md:max-w-3xl md:mx-auto pb-8">
+<section class="bg-on-secondary-fixed text-on-primary rounded-[20px] p-6 mb-stack-gap shadow-lg relative overflow-hidden">
+<div class="font-eyebrow text-eyebrow text-primary-fixed mb-2 uppercase tracking-widest">FALL SEMESTER</div>
+<div class="font-balance-display text-balance-display mb-1">$2,412.00</div>
+<div class="font-body-md text-body-md text-tertiary-fixed-dim">has to last until December 15 — 140 days</div>
+<div class="chart-container mt-6">
+<div class="line-target"></div>
+<div class="line-actual border-secondary-container"></div>
+<div class="absolute right-0 bottom-4 font-label-md text-label-md text-secondary-container bg-on-secondary-fixed p-1 rounded">You're 6 days ahead of pace</div>
+</div>
+<div class="sine-wave mt-6"></div>
+</section>
+<section class="bg-surface-container-lowest rounded-[20px] p-6 mb-stack-gap shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="font-eyebrow text-eyebrow text-on-surface-variant mb-2 uppercase tracking-widest">SAFE TO SPEND</div>
+<div class="font-numeric-table text-[32px] leading-[40px] font-bold text-on-secondary-fixed mb-1">$27.50 / day</div>
+<div class="font-label-md text-label-md text-error">You've averaged $31.20 a day this week.</div>
+</section>
+<section class="bg-surface-container-lowest rounded-[20px] p-6 mb-stack-gap shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase tracking-widest">WHAT'S DRIVING IT</div>
+<div class="flex h-4 w-full rounded-full overflow-hidden mb-6">
+<div class="bg-primary-container h-full" style="width: 34%;"></div>
+<div class="bg-secondary-container h-full" style="width: 28%;"></div>
+<div class="bg-error-container h-full" style="width: 16%;"></div>
+<div class="bg-tertiary-fixed-dim h-full" style="width: 12%;"></div>
+<div class="bg-surface-dim h-full" style="width: 10%;"></div>
+</div>
+<div class="grid grid-cols-2 gap-y-3 font-label-md text-label-md text-on-surface">
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary-container block"></span> 🍜 Food 34%</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-secondary-container block"></span> 🏠 Rent 28%</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-error-container block"></span> 🛒 Groceries 16%</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim block"></span> 🎉 Going Out 12%</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-surface-dim block"></span> other 10%</div>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-[20px] p-6 mb-stack-gap shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase tracking-widest">MONEY COMING IN</div>
+<div class="flex justify-between items-center py-3 border-b border-surface-variant last:border-0">
+<div class="font-body-md text-body-md text-on-surface"><span class="text-on-surface-variant mr-2">Aug 15</span> Financial aid</div>
+<div class="font-numeric-table text-numeric-table text-primary">+$2,100.00</div>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-surface-variant last:border-0">
+<div class="font-body-md text-body-md text-on-surface"><span class="text-on-surface-variant mr-2">Weekly</span> Campus job</div>
+<div class="font-numeric-table text-numeric-table text-primary">+$310.00</div>
+</div>
+</section>
+<div class="flex justify-center mt-8">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md py-3 px-6 rounded-full font-bold hover:opacity-90 transition-opacity">
+                Adjust my pockets
+            </button>
+</div>
+</main>
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl pb-6">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer rounded-lg p-2 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md text-[10px] leading-tight">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer w-20">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-[10px] leading-tight">Banking</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer rounded-lg p-2 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
+<span class="font-label-md text-[10px] leading-tight text-center">Credit card</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer rounded-lg p-2 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
+<span class="font-label-md text-[10px] leading-tight">Invest</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer rounded-lg p-2 w-16">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span class="font-label-md text-[10px] leading-tight">Loans</span>
+</div>
+</nav>
+</body></html>

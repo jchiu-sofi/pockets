@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoFi Pockets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#201747",
+                        "primary": "#00A2C7",
+                        "inverse-on-surface": "#F7F5F2",
+                        "background": "#F7F5F2",
+                        "on-primary-fixed": "#001F28",
+                        "secondary-container": "#E5E1E6",
+                        "on-secondary-fixed-variant": "#3A2F63",
+                        "surface-container-highest": "#E5E1E6",
+                        "inverse-surface": "#201747",
+                        "tertiary-container": "#FEEFC7",
+                        "secondary-fixed-dim": "#C9C4CE",
+                        "surface-bright": "#FFFFFF",
+                        "surface-container-high": "#ECE9E4",
+                        "on-primary-fixed-variant": "#00485A",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#D9D5D0",
+                        "surface-variant": "#E9E6E1",
+                        "tertiary-fixed-dim": "#F5C95F",
+                        "error": "#E03E52",
+                        "error-container": "#FCE4E7",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#E5E1E6",
+                        "tertiary": "#8A6D1F",
+                        "surface-dim": "#E5E1E6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#4A3A0A",
+                        "on-surface-variant": "#53565A",
+                        "on-error-container": "#7A0C1B",
+                        "on-tertiary-fixed": "#3A2C00",
+                        "on-error": "#ffffff",
+                        "secondary": "#201747",
+                        "surface": "#F7F5F2",
+                        "outline": "#8A8D91",
+                        "on-secondary-container": "#201747",
+                        "on-surface": "#201747",
+                        "surface-tint": "#00A2C7",
+                        "on-tertiary-fixed-variant": "#5C4708",
+                        "on-background": "#201747",
+                        "tertiary-fixed": "#FED880",
+                        "primary-fixed": "#CFEFF8",
+                        "inverse-primary": "#7FD9EF",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#00485A",
+                        "surface-container-low": "#FBFAF8",
+                        "primary-container": "#E3F4FA",
+                        "surface-container": "#F2F0EC",
+                        "primary-fixed-dim": "#7FD9EF",
+                        "page-body": "#F7F5F2",
+                        "pocket-green": "#4CAF50",
+                        "pocket-cyan": "#00BCD4",
+                        "pocket-eggplant": "#673AB7",
+                        "pocket-buttercup": "#FFEB3B",
+                        "pocket-taupe": "#795548",
+                        "pocket-berry": "#E91E63",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin": "20px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "data-display": ["JetBrains Mono"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "data-cents": ["JetBrains Mono"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "eyebrow": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "data-display": ["28px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "data-cents": "0.6em",
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "eyebrow": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F7F5F2; /* Level 0 Off-white */
+            margin: 0;
+            padding-bottom: 80px; /* Space for bottom nav */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Material Icons setup */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-page-body text-on-surface">
+<!-- TopAppBar JSON execution (with specific design updates for this screen) -->
+<!-- The JSON specified leading menu and trailing account_circle, but prompt asked for back chevron and settings gear, Title Pockets. I will merge intent: -->
+<header class="bg-primary dark:bg-primary text-on-primary dark:text-on-primary font-headline-md text-headline-md fixed top-0 w-full z-50 flex flex-col px-container-margin w-full pt-safe">
+<!-- App Bar Action row -->
+<div class="flex justify-between items-center h-16 w-full pt-4">
+<button class="hover:bg-primary-container/20 active:scale-95 transition-transform p-2 -ml-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="font-headline-md text-headline-md font-bold text-on-primary">Pockets</div>
+<button class="hover:bg-primary-container/20 active:scale-95 transition-transform p-2 -mr-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<!-- Header Content specific to Pockets -->
+<div class="pt-4 pb-12 flex flex-col">
+<div class="font-eyebrow text-eyebrow text-on-primary/80 uppercase tracking-widest mb-2">CHECKING</div>
+<div class="font-data-display text-data-display text-on-primary mb-4">
+                $1,284.<span class="text-data-cents align-super">40</span>
+</div>
+<div class="flex justify-between items-center bg-primary-container/30 rounded-full py-2 px-4 w-full">
+<div class="font-body-sm text-body-sm text-on-primary">$212.60 unallocated</div>
+<button class="bg-surface-container-lowest text-primary rounded-full px-4 py-1.5 font-body-sm text-body-sm font-semibold active:scale-95 transition-transform shadow-sm">
+                    Allocate
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-[280px] px-container-margin relative z-10 space-y-stack-lg">
+<!-- Floating Suggestion Card (Overlaps header slightly via negative margin) -->
+<div class="-mt-20 bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] relative overflow-hidden flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-pocket-green/10 p-2 rounded-full flex items-center justify-center text-pocket-green">
+<span class="material-symbols-outlined fill">location_on</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface leading-tight font-medium mb-1">You're near Trader Joe's</p>
+<p class="font-body-sm text-body-sm text-outline text-xs">Pay with Groceries</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-primary text-on-primary rounded-full px-3 py-1.5 font-body-sm text-body-sm font-semibold whitespace-nowrap active:scale-95 transition-transform text-xs">
+                    Open Wallet
+                </button>
+<button class="text-outline hover:text-on-surface p-1 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+</button>
+</div>
+</div>
+<!-- Pocket Perks -->
+<section class="space-y-stack-sm">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-widest pl-1">POCKET PERKS · NEW THIS WEEK</h3>
+<!-- Horizontal Scroll Container -->
+<div class="flex overflow-x-auto no-scrollbar space-x-gutter pb-4 -mx-container-margin px-container-margin">
+<!-- Perk Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] min-w-[240px] flex-shrink-0 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant shrink-0" data-alt="A stylized, clean vector illustration logo placeholder representing a fast food burger chain in vivid reds and yellows, set against a pristine white background. High-key modern light mode UI aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHNxYFs4XlSPafYKA6YYR0TQzmcUCpgGjFQY31ejFnTBLhPrD910_ahHX4gtCvLWN2KokfXksH7g7_z5VHqMT4bo2-9mz9p02qn-q5yUxqHegWemsM6psl2x94Aqg7E8xSSk4u63jWIUwpV5qOYHG9jAgPWQ9TQLlcgtLAZxLYEKoLDqX7MlSKiMz82wUsXjqqLByE_MWcAQcKYLcH5-n-pWp_f84yVPw3K3qVJmXgAdj7AbsA4XjD')"></div>
+<span class="material-symbols-outlined text-outline">local_dining</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">Free fries with any $10+ order, Five Guys</p>
+<button class="mt-auto bg-surface-container-lowest border border-primary text-primary rounded-full px-4 py-1.5 font-body-sm text-body-sm font-semibold w-full active:scale-95 transition-transform">
+                        Activate
+                    </button>
+</div>
+<!-- Perk Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] min-w-[240px] flex-shrink-0 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant shrink-0" data-alt="A sleek, modern vector icon of a streaming music app in vibrant bright neon green on a crisp white background. Minimalist layout, perfect lighting, light mode banking app aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHOR1-nUBKKkn1VeVOF2pC6AsQvVXMN9tmerrH_crmXYXN1GR7qMH13qviPhrpLgZJuR9VFHcg-EzCmcvxVJzBE7pSn2Jj7-PjAfTM-4ri5M83FBy8-rkfS_N2PymgxqOwgb8zEF5y0YA6Ae2KSGySnPj19_xN6EfAi902BscXQJp7aDLDdHNOBei0Rmp9ucPCgw2EMQQ18NVPNhTw2y5oVRwziEvNcj0arsugAtdsqztuLBmovb1n')"></div>
+<span class="material-symbols-outlined text-outline">headphones</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">$5 back on Spotify Premium</p>
+<button class="mt-auto bg-surface-container-lowest border border-primary text-primary rounded-full px-4 py-1.5 font-body-sm text-body-sm font-semibold w-full active:scale-95 transition-transform">
+                        Activate
+                    </button>
+</div>
+<!-- Perk Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] min-w-[240px] flex-shrink-0 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant shrink-0" data-alt="A minimal geometric logo for a train transit company featuring sleek silver and blue lines on a pure white circle background. Soft, diffused lighting, clean corporate UI design style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTUspOP2FIa-oNa1AFh5JoInT8pic6LPK_P7KtF793W5s3Xb63eGWJzq5Gi_pvsQrvHaaO4Btxlv9kFi-s7BMoWIutMZL4y3fLPQRxhbiGmLDSGoGfF6wUxdiUXIWcSn0AAXcC9kuMWDCV7mzaWTHsZ8uj7JChDx4dQh67G4F1G2AjJ3XpXced704pRYlXPZqJD8FjY-dsXXeDlCBQOHO4ck1u5eGNgN-b2s46UAT30sJDPGIOc_mW')"></div>
+<span class="material-symbols-outlined text-outline">train</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">20% off Amtrak, book by Sunday</p>
+<button class="mt-auto bg-surface-container-lowest border border-primary text-primary rounded-full px-4 py-1.5 font-body-sm text-body-sm font-semibold w-full active:scale-95 transition-transform">
+                        Activate
+                    </button>
+</div>
+</div>
+</section>
+<!-- Your Pockets Grid -->
+<section class="space-y-stack-sm pb-8">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-widest pl-1">YOUR POCKETS</h3>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Food -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-cyan/20 flex items-center justify-center text-xl">🍜</div>
+</div>
+<div class="space-y-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Food</h4>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $128.<span class="text-data-cents align-super">40</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-pocket-cyan h-full rounded-full" style="width: 42%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">$128 left of $300</p>
+</div>
+</div>
+<!-- Groceries -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-green/20 flex items-center justify-center text-xl">🛒</div>
+</div>
+<div class="space-y-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Groceries</h4>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $74.<span class="text-data-cents align-super">12</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-pocket-green h-full rounded-full" style="width: 49%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">$74 left of $150</p>
+</div>
+</div>
+<!-- Rent (Joint) -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square relative">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-eggplant/20 flex items-center justify-center text-xl">🏠</div>
+<!-- Avatars -->
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A tiny circular profile picture of a smiling young adult woman with shoulder-length brown hair, set against a bright yellow background. High key lighting, clean crisp corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwxWSD0dTYE0J5lLlqQLm1f5koamxfM9xSRQleLHNJsVv3Q7zj9Ppp6j83CksP5kFIH10q8vi0gY-q66tPvd3x_PTx2O1SGKEAksVKa_--5SK0Q7fPjVOjGmWY1kc9VJyB7vRjDMXbM_j4TMCsKSiPDCEjyoK5qL4BS1CUC_M08Qn-JTDdS7LKIR4ezo6m9Myu2jE2QZ--e5evgoRMQ8l5rYvpBMXq9l5AL7BpS0E9R_dxQgFRboCR"/>
+<img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A tiny circular profile picture of a young man with glasses and short black hair, wearing a casual blue shirt against a soft pink background. High contrast, well lit, modern ui styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgIM_IF41G9cIcTYW8ObvsPmopt660_JsHxXIXW2oZgKo5gS9KAgcFyKprT1hzmCIaQuZUUMSDtqyoHcBRUP4pjJXXOzTNVqRNP82xq3gjc0PaK09LZHYsI_VR2TAfYWcb3LuNvS5whFnywXxdpHo8QhJU0ilfnh1DV7esOObHx9KrvN0jl-aBAJXU0yvXnnZ0Co9Nh0E7Kuq1yxqu4U4yzTFY83vlbE6gJVzC7EhQ1ekShYF8TQAx"/>
+<img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A tiny circular profile picture of a person with short blonde hair and a warm smile, wearing a white sweater against a pale blue background. Corporate modern aesthetic, bright." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGlLitYe2oqJ9raWzdW_esMBUv7OufB05YB4m1EetA5vz9AXu1jGouerk0aX5LxhyYcYd8WZGqXj-CCoVuSuEMNh3i3KF5FhQSuLLGsOuf0W7xfxA_Bf7tJq05TmjkYTvfeSMdgQSE0NGO4XW-nQjprH3o7rJe7RFavsHQFlivrF--8C0Z9Z8xrGqmaZOtgE2JEhYaQ_ZbNo_WjpIwP9u2XQUS06ACmkBvjhiLZRPjpmJnxvaPD4LD"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Rent</h4>
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Shared</span>
+</div>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $1,650.<span class="text-data-cents align-super">00</span>
+</div>
+</div>
+</div>
+<!-- Books -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-buttercup/20 flex items-center justify-center text-xl">📚</div>
+</div>
+<div class="space-y-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Books</h4>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $210.<span class="text-data-cents align-super">00</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-pocket-buttercup h-full rounded-full" style="width: 52%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">$210 left of $400</p>
+</div>
+</div>
+<!-- Transit (Low) -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square border border-error/20">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-taupe/20 flex items-center justify-center text-xl">🚌</div>
+<span class="material-symbols-outlined text-error fill" style="font-size: 20px;">warning</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Transit</h4>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $18.<span class="text-data-cents align-super">50</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
+<div class="bg-amber-500 h-full rounded-full" style="width: 15%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-error text-xs mt-1 font-medium">Low balance</p>
+</div>
+</div>
+<!-- Spring Break (Joint) -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.08)] flex flex-col justify-between aspect-square">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-pocket-berry/20 flex items-center justify-center text-xl">✈️</div>
+<!-- Avatars -->
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A small circular avatar of an adventurous looking person wearing sunglasses and a beanie, against an orange background. Clean vibrant corporate UI lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8iybyoKoJfIi0UbbzRX6AFXYMR_jLc6DkWeJoMyZYwmEK1I9GQheV2HITld9_xfrGzbgJnQS6as6Di_nYmyom0E-QLGj55c6rMl-4VzYJLS5XKF9dfgqhvm-uNnvZ_1IOeOrIcDGLSufA6Of7f4yijInshDUw3t8_8NLEEF_V_roRNVpJtkqobJex9iMN_L9T42N_UAPg3018_SivI7dpDWFeEZWpX78JR6A-SWDD3w4QS0hSxxaO"/>
+<img alt="Avatar" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A small circular avatar showing a person smiling widely with curly dark hair against a soft mint green background. Studio lighting, bright crisp modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgLoxSXLxu9uDeQx_Kx-L8ErxBNANFCwlpTvUtLSdiMyT3zvHSoT6j88hbAHG8XNj5NFH5FizJlYCx_4SWie04_bZEMkP5vE4Md9kIaaM4K19ex7xk5SbwEUvPU_1s5CG6MUDTZWlEMOVB_Z6TwxU_RBy8rIxhOFBpOraNOBZqJNhPdMg0KO0u5XxHJ4x65lvvX-OdExOZCv8tptqxXWWXqteaYsOBB7g3UvLw6cwtvwVo3bLTcJeK"/>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-lowest bg-surface-variant flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+2</div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1">
+<h4 class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Spring Break</h4>
+</div>
+<div class="font-data-display text-data-display text-on-surface text-xl">
+                            $340.<span class="text-data-cents align-super">00</span>
+</div>
+<span class="inline-block bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider mt-2">Shared</span>
+</div>
+</div>
+<!-- Add New -->
+<button class="bg-transparent rounded-2xl p-4 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center aspect-square text-outline hover:text-primary hover:border-primary transition-colors hover:bg-primary/5 active:scale-95 transition-transform gap-2">
+<span class="material-symbols-outlined" style="font-size: 32px;">add</span>
+<span class="font-body-sm text-body-sm font-semibold">New pocket</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar JSON execution. Banking is active. -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-2 pb-safe bg-surface-container-lowest border-t border-outline-variant dark:border-outline shadow-[0px_-4px_20px_rgba(32,23,71,0.08)] z-50 rounded-t-none">
+<!-- Home -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant flex-1 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-all duration-200 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-body-sm text-body-sm text-[10px] leading-none">Home</span>
+</div>
+<!-- Banking (Active) -->
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold flex-1 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-all duration-200 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined fill mb-1">account_balance</span>
+<span class="font-body-sm text-body-sm text-[10px] leading-none font-bold">Banking</span>
+</div>
+<!-- Credit Card -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant flex-1 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-all duration-200 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined mb-1">credit_card</span>
+<span class="font-body-sm text-body-sm text-[10px] leading-none">Credit Card</span>
+</div>
+<!-- Invest -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant flex-1 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-all duration-200 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="font-body-sm text-body-sm text-[10px] leading-none">Invest</span>
+</div>
+<!-- Loans -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant flex-1 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant active:scale-90 transition-all duration-200 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="font-body-sm text-body-sm text-[10px] leading-none">Loans</span>
+</div>
+</nav>
+</body></html>

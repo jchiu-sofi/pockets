@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rent Pocket Detail - Shared</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "card": "20px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .eggplant-bg {
+            background-color: #201747; /* Fallback specific brand color if not in config, assuming 'Ink' or 'Eggplant' */
+        }
+        .eggplant-text {
+            color: #201747;
+        }
+        .sine-wave-border {
+            border-bottom: 2px solid #00A2C7;
+            position: relative;
+        }
+        .sine-wave-border::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='4' viewBox='0 0 100 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2C12.5 2 12.5 4 25 4C37.5 4 37.5 0 50 0C62.5 0 62.5 4 75 4C87.5 4 87.5 2 100 2' stroke='%2300A2C7' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+        /* Overriding specific hex for specific requested feature */
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased pb-24 font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Header Block in Eggplant -->
+<header class="eggplant-bg text-on-primary pt-12 pb-6 px-container-margin sticky top-0 z-40 sine-wave-border">
+<div class="flex justify-between items-center mb-6">
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="text-2xl">🏠</span>
+<h1 class="font-headline-md text-headline-md font-bold">Rent</h1>
+<span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-0.5 rounded-sm tracking-wider uppercase ml-2">SHARED</span>
+</div>
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<h2 class="font-balance-display text-balance-display mb-1">$1,650.00</h2>
+<p class="text-primary-fixed-dim font-body-md text-body-md opacity-90">of $1,800 due Aug 1</p>
+<!-- Progress Bar -->
+<div class="w-full max-w-xs bg-surface-container-highest h-2 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full w-[92%] transition-all duration-1000 ease-out"></div>
+</div>
+<!-- Avatar Stack -->
+<div class="flex items-center justify-center mt-6">
+<div class="flex -space-x-3">
+<img alt="Sammy" class="w-10 h-10 rounded-full border-2 border-[#201747] object-cover bg-surface-container-low z-30" data-alt="A small, circular profile picture of a young man with brown hair smiling against a solid warm background. The lighting is soft and flattering, suitable for a modern digital avatar. The aesthetic is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2A_WomDsMc8xqsRNcwot0ghpALJxT7Ply8onvD7AyWRxIi8K6M8if9oNzl-i9hUONFMPvxY7Yiw3JOY0JTBylWsscZvhvPJ6vS79LRiK-R_NQjpq_L_5tfk4r5wuA3eoYASejGd5E1FwgUsDSqPqYwg4VCaJS2db1F__pnNJCzwCRWXc5baJXgx6IDf-ozjT70GzEXgEp_T_mVRxx4YtO3uyfC1801cKosMWtixKfdDiGn3tB79UN"/>
+<img alt="Maya" class="w-10 h-10 rounded-full border-2 border-[#201747] object-cover bg-surface-container-low z-20" data-alt="A small, circular profile picture of a young woman with dark curly hair looking confidently at the camera against a cool blue background. The style is sharp and modern, matching a premium app interface. Lighting is bright and even." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpZef6UBjTrw4QXWrve4bqoOW7ZoB75zpIM3NDF0IyB8E9xlYTqcQxAznhFg65KHCWSy6NHRGkt1wzzIEHhoXL9lxkH33WynKstNxzhSQREizeuYk97kcEGNQmo45BYsbWcQTH_h47na8vOOcxBMfkjmm8Gr96nTKiauLCMEGSd8JB8b51vzbg2295Ot4DItwThcC7M8ZnkWD9308El3NT09pVtTfjQNEqF6kPOzvce3UWkMX95EW2"/>
+<img alt="Dev" class="w-10 h-10 rounded-full border-2 border-[#201747] object-cover bg-surface-container-low z-10" data-alt="A small, circular profile picture of a person wearing glasses and a neat button-down shirt against a neutral grey background. The portrait is crisp, friendly, and well-lit, designed for a digital profile circle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnZQOP6a9nXG_pgH6mnXy1XvITjtaGHIK956Iw9CU6fK_1t9cK7ZIShzjVGd9AHdryNr_4UAkFQTOVwoxtK-fzXiT0CDmM9Sx8BHsSTFoNz_qCt0dFWV_picTOrAibhy5lrWb23T1rzpX4Sbzov9cbkPFHG0FbdAi9apwngPPXA80D1QL7-24FuM8vHb0IpZGg8U7bFypRRS53IhhL-8PiU9uV0hSxJtCY0dyr10GmIu17Vw9dhyfL"/>
+</div>
+<button class="w-10 h-10 rounded-full border-2 border-dashed border-primary-fixed-dim flex items-center justify-center ml-2 text-primary-fixed-dim hover:bg-white/10 transition-colors z-0">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+<span class="ml-2 font-label-md text-label-md text-primary-fixed-dim text-sm">Invite</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-container-margin pt-6 flex flex-col gap-stack-gap">
+<!-- Action Buttons -->
+<div class="flex gap-4 w-full">
+<button class="flex-1 bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md font-bold py-3 px-4 rounded-full border border-outline-variant shadow-sm hover:bg-surface-container-low transition-colors">
+                Add my share
+            </button>
+<button class="flex-1 bg-primary text-on-primary font-label-md text-label-md font-bold py-3 px-4 rounded-full shadow-md hover:bg-surface-tint transition-colors">
+                Pay rent
+            </button>
+</div>
+<!-- Members Card -->
+<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-surface-variant relative z-10 mt-2">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">MEMBERS</h3>
+<div class="flex flex-col gap-5">
+<!-- Sammy Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Sammy" class="w-10 h-10 rounded-full object-cover bg-surface-variant" data-alt="A highly detailed close up of a young man with short brown hair smiling gently. The portrait is circular, set against a solid warm background. The lighting is soft and flattering, suitable for a modern digital avatar. The aesthetic is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNrdkJFUJGZdP4qwHKuIfSLfWSUQvQ3aB4dH-XoMQ8fMNmuaBeD11pnNL950zVw7Vp2WTVzdEVyx8vysF8Vv5p9eSdnlhIynL-wQhaGNHjpvp7Uu0g5vY1zxGoh9lH47_NTFGIvDx78h27qF1yYSHf_lfK7aaAxbc1VWq4OaM1qRdeD6UxNwkH2BWqZgz8ehXjEExHMzeS-L1eK8TgQVcaPPaVeD8FGES3hI4Gn5wubnxZtm4-ao5z"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Sammy <span class="text-on-surface-variant font-normal">(You)</span></p>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">33% · $600</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-2">
+<p class="font-label-md text-label-md text-sm text-on-surface-variant">Paid Jul 25</p>
+<span class="material-symbols-outlined text-[#147D3B]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Maya Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Maya" class="w-10 h-10 rounded-full object-cover bg-surface-variant" data-alt="A highly detailed portrait of a young woman with dark curly hair looking confidently at the camera. The background is a cool blue, matching a premium app interface. Lighting is bright, even, and creates a polished, modern look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwTqkp3Rm8mCuFJOBBhoB_l1JHI7A9vg5NsxOOd_N2zT3ZAeOt2GTc_V51ZQU3yRSFgDPMt-9O5hEZmb1HqnEX9n-t00gVaRoplzS8e_iBANIeTbKOARcIcPkZaUIwF2-RGomjhozVvdwAyg5tI0j8Y42UTMEpthNKVYxABfn4u8BJaURKXLlxJyXy0BKg-ynYnuzbwc-ZF7izGZ4Q-Gqe99D6b4t0QOEj4NVrGfasGSuf28dxspaf"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Maya R.</p>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">33% · $600</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-2">
+<p class="font-label-md text-label-md text-sm text-on-surface-variant">Paid Jul 24</p>
+<span class="material-symbols-outlined text-[#147D3B]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Dev Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Dev" class="w-10 h-10 rounded-full object-cover bg-surface-variant" data-alt="A portrait of a person wearing glasses and a neat button-down shirt against a neutral grey background. The portrait is crisp, friendly, and well-lit, designed for a digital profile circle. The aesthetic is modern and corporate-lite." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2SA69l5PF4h-FQdEzapkHT7J_vJn3h4HfYzybq7_tG6Vk3kimUMAloIwSAJ9AmlXcLuUFvt-h-SMMcJsuNRNY7fM_NZmv0JfONExRRSzQwiSey2-D6JID8NnjiIb_vtYJOjEMjVMDrJslsmciky13Amknxu3hkE9Lva57ozVwjU7-OI7bLuoXgqYe-pN4MKz1PAukOKxC5E9cDWf3OWoyotO4DdO8lqfSdd5l46pgig2J5fKUTu-a"/>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Dev P.</p>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">34% · $600</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-2">
+<p class="font-label-md text-label-md text-sm text-error">Due in 4 days</p>
+<button class="bg-surface-variant text-on-surface-variant font-label-md text-label-md text-xs px-3 py-1 rounded-full font-semibold hover:bg-surface-dim transition-colors">Remind</button>
+</div>
+</div>
+<!-- Jordan Row -->
+<div class="flex items-center justify-between opacity-60">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-dashed border-outline flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-lg">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Jordan L.</p>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant">Invite pending</p>
+</div>
+</div>
+<div class="text-right flex items-center gap-2">
+<button class="bg-surface-variant text-on-surface-variant font-label-md text-label-md text-xs px-3 py-1 rounded-full font-semibold hover:bg-surface-dim transition-colors">Resend</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Virtual Card Section -->
+<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-surface-variant">
+<div class="eggplant-bg rounded-xl p-5 text-on-primary shadow-md relative overflow-hidden mb-4">
+<!-- Decorative elements for the card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-8 -mb-8"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<p class="font-eyebrow text-eyebrow tracking-widest text-primary-fixed-dim">RENT · SHARED</p>
+<span class="material-symbols-outlined opacity-80 text-3xl">contactless</span>
+</div>
+<div class="flex justify-between items-end relative z-10">
+<p class="font-numeric-table text-numeric-table text-xl tracking-widest">•••• 8802</p>
+<img alt="Payment Network Logo" class="h-6 opacity-80" data-alt="A small, stylized logo representing a digital wallet or payment network, depicted in minimalist white lines against a dark background. The design is sleek, modern, and conveys financial security and seamless transactions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdhp4edhBXR55puq2snNrt51apiCXIwQGzeyr0tEDngqaH17Pp7j0kIIwgirrX5u4WOjr1TBRlLvo7VF99m-i8jWCIfowlkcuEiNyS_ym7mzllRg6fphpUaM0SLDZzJazmgK8JLdvWn6FMWNOLncxT5dLVufrdJbI2XubD8q9A-oBgKwmPc7zdK2ubgBQfdLcbTJBTkQeQLM7S4c2rCea-4qGHgJv1aNd-7Z08yKEk_FnIrcRxZ6cL"/>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-on-surface text-on-primary font-label-md text-label-md font-bold py-3 rounded-xl hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+                 Add to Apple Wallet
+             </button>
+</section>
+<!-- Activity Card -->
+<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-surface-variant mb-6">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">ACTIVITY</h3>
+<div class="flex flex-col gap-4">
+<!-- Row 1 -->
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img alt="Maya" class="w-10 h-10 rounded-full object-cover bg-surface-variant flex-shrink-0" data-alt="A highly detailed portrait of a young woman with dark curly hair looking confidently at the camera. The background is a cool blue, matching a premium app interface. Lighting is bright, even, and creates a polished, modern look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXw2umRvE13Lux_3-_bSkYq9D37zdNfuQJJT3FkzFNE_asX1YWJo6NMCuEzvNgW7wwUVbcfLhV8n-GvY_djdnm-PMlbjGlWBXO0Tvv6wHQVJrzoLzKtpXhCIRg5snqcihtBEiDLAc9eb9V0c3pfB1VapIfuVnmcxzhkuFO9TSy46T7kBgQdKVcju54CUgu6BuvaQiyKwbiEA-UC10FBuxPdWeUmsfRuoF4i38TYFXD1DtzHYpFxd_f"/>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Maya paid Greystone</p>
+<p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jul 1</p>
+</div>
+</div>
+<p class="font-numeric-table text-numeric-table font-semibold text-on-surface">−$1,800.00</p>
+</div>
+<!-- Divider -->
+<hr class="border-surface-variant my-1"/>
+<!-- Row 2 -->
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img alt="Dev" class="w-10 h-10 rounded-full object-cover bg-surface-variant flex-shrink-0" data-alt="A portrait of a person wearing glasses and a neat button-down shirt against a neutral grey background. The portrait is crisp, friendly, and well-lit, designed for a digital profile circle. The aesthetic is modern and corporate-lite." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbNbNP45pbN6PirpJ40fgTnURxYsXZD7tVVukjtIVB5NY2MqrKk1IZIoY5rUMBFv2YN1r5NmAsEpCPKG4Xa4n5bw91l2T9M6rIXbOlNyyB4RAASZpt9fRo9qEL2dwUQNEKOv1rQrYYDbfEIAxxdM-xJvTMCOJBsRdB6OKMrgHM9AaKj-T1ohIihfhx5Qycp2zlg-ipni4JFB9plwvEwMNl-QaVQiS8tiCjyPyLgSF_aj6CurMVetoW"/>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Dev added money</p>
+<p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jun 28</p>
+</div>
+</div>
+<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600.00</p>
+</div>
+<!-- Divider -->
+<hr class="border-surface-variant my-1"/>
+<!-- Row 3 -->
+<div class="flex items-start justify-between">
+<div class="flex gap-3">
+<img alt="Sammy" class="w-10 h-10 rounded-full object-cover bg-surface-variant flex-shrink-0" data-alt="A highly detailed close up of a young man with short brown hair smiling gently. The portrait is circular, set against a solid warm background. The lighting is soft and flattering, suitable for a modern digital avatar. The aesthetic is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRgAsoHgKEOtV8f9uGfr_ACm8tmebTqXnR2V0elMRTZizelGJjgbV4MQeFspefJDe-1410CpQDANuAlCbwHSu5B9uarT_cUgelEt1BWhD5F7UdSXRYXmZ1bPjChS5i0hn7QneF-Os5FwpEAvXXTII0z4VLHCEdeIOmlgjyjuoY9-I1VOI-Vc7E_WiWbki6oz6E53wrBPjACqNDTbp4_0soFSr0zcd68QfnUCEtTOaU5Z0PvgB2AVuV"/>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Sammy added money</p>
+<p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jun 27</p>
+</div>
+</div>
+<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600.00</p>
+</div>
+</div>
+</section>
+<!-- Footnote -->
+<p class="font-body-md text-body-md text-xs text-center text-on-surface-variant opacity-70 px-4 mb-4">
+            A shared pocket is a joint account...
+        </p>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl hidden md:hidden block">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="font-label-md text-label-md text-[10px] mt-1">Home</span>
+</a>
+<!-- Banking (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-label-md text-label-md text-[10px] mt-1 font-bold">Banking</span>
+</a>
+<!-- Credit card -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+<span class="font-label-md text-label-md text-[10px] mt-1">Credit card</span>
+</a>
+<!-- Invest -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">trending_up</span>
+<span class="font-label-md text-label-md text-[10px] mt-1">Invest</span>
+</a>
+<!-- Loans -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl">payments</span>
+<span class="font-label-md text-label-md text-[10px] mt-1">Loans</span>
+</a>
+</nav>
+<!-- Desktop Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex justify-between items-center px-container-margin w-full bg-primary dark:bg-primary h-[header-height] fixed top-0 z-50">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-black text-on-primary" href="#">SoFi Pockets</a>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-primary hover:opacity-80 transition-opacity font-bold" href="#">Banking</a>
+<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Credit card</a>
+<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Invest</a>
+<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Loans</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover border-2 border-on-primary" data-alt="A small, circular profile picture of a young man with brown hair smiling against a solid warm background. The lighting is soft and flattering, suitable for a modern digital avatar. The aesthetic is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpWI7IrXu5vUxmazWAc7lKGdmzldmVpvaL6o1ygLrgJdu-m97-nok4QgTLLjRAWHutHCkfMyJGQps3QZx1aMmAkPiTYQOoAEACgm6_b8ws7KUT0VokXs7Kmujrz8NOCFv5-LVnGBKYd2S7IGAe2C607QOKXnFPL7iRa4YY37-3l46n9Zi8LGQDEEi2KG_mZtDTMT9vC2BHtvxqaRl4Q0YHlWmZ2N3OhRtDxEgsrrANr_16SbeAoDGQ"/>
+</div>
+</nav>
+<style>
+        /* Hide mobile header if on desktop */
+        @media (min-width: 768px) {
+            header.eggplant-bg {
+                margin-top: 120px;
+            }
+        }
+        @media (max-width: 767px) {
+            nav.md\:hidden {
+                display: flex !important;
+            }
+        }
+    </style>
+</body></html>

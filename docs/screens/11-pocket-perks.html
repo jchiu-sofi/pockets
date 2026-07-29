@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pocket Perks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      }
+              }
+            },
+          }
+    </script>
+<style>
+        .sine-wave {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 25 20 50 10 T 100 10' fill='none' stroke='%2300A2C7' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            height: 20px;
+            width: 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface pb-[80px] md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-primary docked full-width top-0 h-[header-height] bg-primary flat no shadows transition-opacity duration-200 flex justify-between items-center px-container-margin w-full sticky z-40">
+<button class="text-on-primary hover:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black text-on-primary">SoFi Pockets</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm">person</span>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto">
+<!-- Ink Header Block -->
+<section class="bg-on-secondary-fixed text-on-primary pt-8 pb-12 px-container-margin relative overflow-hidden rounded-b-xl shadow-lg">
+<div class="inline-block bg-[#FDB813] text-on-secondary-fixed font-eyebrow text-eyebrow px-3 py-1 rounded-sm mb-4">
+                POCKET PERKS
+            </div>
+<h2 class="font-headline-lg text-headline-lg mb-6 max-w-[280px]">Perks for paying from a pocket.</h2>
+<div class="font-numeric-table text-numeric-table text-primary-fixed-dim">
+                $38.50 earned this semester
+            </div>
+<div class="sine-wave absolute bottom-0 left-0"></div>
+</section>
+<!-- Countdown Strip -->
+<div class="bg-primary-container text-on-primary-container font-eyebrow text-eyebrow py-3 px-container-margin text-center">
+            NEW DROP IN 2 DAYS · WEDNESDAYS
+        </div>
+<div class="px-container-margin py-8 space-y-stack-gap">
+<!-- This Week Section -->
+<div>
+<h3 class="font-eyebrow text-eyebrow text-tertiary mb-4">THIS WEEK</h3>
+<div class="space-y-4">
+<!-- Offer Card 1: Activated -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4 relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🍔</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Five Guys</div>
+<div class="font-headline-md text-headline-md text-on-surface">Free large fries...</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-low text-on-surface-variant font-eyebrow text-eyebrow px-2 py-1 rounded-md flex items-center gap-1">
+<span>🍜</span> Food
+                                </span>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-md text-label-md">Activated</span>
+</div>
+</div>
+</div>
+<!-- Offer Card 2 -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🎵</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Spotify</div>
+<div class="font-headline-md text-headline-md text-on-surface">$5 back...</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex flex-col gap-1">
+<span class="bg-surface-container-low text-on-surface-variant font-eyebrow text-eyebrow px-2 py-1 rounded-md inline-flex items-center w-fit gap-1">
+<span>🎬</span> Subscriptions
+                                </span>
+<span class="font-eyebrow text-eyebrow text-error">3 days left</span>
+</div>
+<button class="bg-surface-tint text-on-primary font-label-md text-label-md py-2 px-5 rounded-full hover:bg-primary transition-colors">
+                                Activate
+                            </button>
+</div>
+</div>
+<!-- Offer Card 3 -->
+<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🚆</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Amtrak</div>
+<div class="font-headline-md text-headline-md text-on-surface">20% off...</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex flex-col gap-1">
+<span class="bg-surface-container-low text-on-surface-variant font-eyebrow text-eyebrow px-2 py-1 rounded-md inline-flex items-center w-fit gap-1">
+<span>✈️</span> Travel
+                                </span>
+<span class="font-eyebrow text-eyebrow text-tertiary">Ends Aug 3</span>
+</div>
+<button class="bg-surface-tint text-on-primary font-label-md text-label-md py-2 px-5 rounded-full hover:bg-primary transition-colors">
+                                Activate
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Earned Section -->
+<div class="pt-6 border-t border-outline-variant/30">
+<h3 class="font-eyebrow text-eyebrow text-tertiary mb-4">EARNED</h3>
+<div class="bg-surface-container-lowest rounded-[20px] p-2 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/20 last:border-0">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Five Guys</span>
+<span class="font-eyebrow text-eyebrow text-tertiary">Jul 12</span>
+</div>
+<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$4.29</span>
+</div>
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/20 last:border-0">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Chipotle</span>
+<span class="font-eyebrow text-eyebrow text-tertiary">Jul 10</span>
+</div>
+<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$2.00</span>
+</div>
+<div class="flex items-center justify-between p-3 border-b border-outline-variant/20 last:border-0">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Spotify</span>
+<span class="font-eyebrow text-eyebrow text-tertiary">Jul 1</span>
+</div>
+<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$5.00</span>
+</div>
+</div>
+</div>
+<p class="font-eyebrow text-eyebrow text-tertiary-container text-center pt-8 pb-12">
+                Offers are funded by our partners and subject to terms.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-low text-primary dark:text-primary-fixed font-label-md text-label-md font-headline-md text-headline-md font-black text-primary docked full-width bottom-0 rounded-t-xl shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] shadow-lg hover:bg-surface-container-high scale-95 active:scale-90 transition-transform fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="text-[10px] font-medium">Banking</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">credit_card</span>
+<span class="text-[10px] font-medium">Credit card</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+<span class="text-[10px] font-medium">Invest</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="text-[10px] font-medium">Loans</span>
+</button>
+</nav>
+</body></html>

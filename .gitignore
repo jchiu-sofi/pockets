@@ -1,0 +1,11 @@
+# Internal SoFi brand source material — do not publish.
+Brand Guidelines.pdf
+Sofi DAM_ Collection Preview.pdf
+*.webp
+76b0ffb72acb26b9.png
+91c99e62dfe46473.png
+
+# renders/ IS committed: the README gallery shows them inline on github.com.
+# Regenerate with ./render.sh
+
+.DS_Store

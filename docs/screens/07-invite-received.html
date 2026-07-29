@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoFi Pockets - Invitation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#201747",
+                      "on-tertiary-fixed-variant": "#5C4708",
+                      "primary": "#00A2C7",
+                      "primary-fixed": "#CFEFF8",
+                      "tertiary-fixed": "#FED880",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#FEEFC7",
+                      "on-error-container": "#7A0C1B",
+                      "outline": "#8A8D91",
+                      "outline-variant": "#D9D5D0",
+                      "on-secondary-fixed": "#201747",
+                      "error": "#E03E52",
+                      "tertiary-fixed-dim": "#F5C95F",
+                      "surface-bright": "#FFFFFF",
+                      "on-tertiary-fixed": "#3A2C00",
+                      "background": "#F7F5F2",
+                      "on-tertiary-container": "#4A3A0A",
+                      "secondary-container": "#E5E1E6",
+                      "surface-container-highest": "#E5E1E6",
+                      "inverse-on-surface": "#F7F5F2",
+                      "primary-container": "#E3F4FA",
+                      "on-primary-container": "#00485A",
+                      "secondary-fixed": "#E5E1E6",
+                      "surface-container-high": "#ECE9E4",
+                      "surface-variant": "#E9E6E1",
+                      "surface-container-low": "#FBFAF8",
+                      "on-background": "#201747",
+                      "secondary-fixed-dim": "#C9C4CE",
+                      "surface-tint": "#00A2C7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#F7F5F2",
+                      "on-primary-fixed": "#001F28",
+                      "on-surface-variant": "#53565A",
+                      "primary-fixed-dim": "#7FD9EF",
+                      "on-secondary-fixed-variant": "#3A2F63",
+                      "error-container": "#FCE4E7",
+                      "surface-container": "#F2F0EC",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#201747",
+                      "on-secondary-container": "#201747",
+                      "inverse-primary": "#7FD9EF",
+                      "surface-dim": "#E5E1E6",
+                      "on-primary-fixed-variant": "#00485A",
+                      "inverse-surface": "#201747",
+                      "tertiary": "#8A6D1F",
+                      "ink": "#201747",
+                      "ink-light": "#362b66",
+                      "positive-green": "#008552"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "card": "20px"
+              },
+              "spacing": {
+                      "header-height": "120px",
+                      "stack-gap": "16px",
+                      "container-margin": "20px",
+                      "inline-gap": "12px",
+                      "section-gap": "24px"
+              },
+              "fontFamily": {
+                      "balance-display": [
+                              "Figtree"
+                      ],
+                      "headline-lg": [
+                              "Figtree"
+                      ],
+                      "eyebrow": [
+                              "Inter"
+                      ],
+                      "numeric-table": [
+                              "Roboto Mono"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Figtree"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "balance-display": [
+                              "44px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "eyebrow": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-table": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              },
+              "boxShadow": {
+                  "soft": "0px 4px 20px rgba(32, 23, 71, 0.06)"
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .ink-wave-bg {
+            background-color: theme('colors.ink');
+            position: relative;
+            overflow: hidden;
+        }
+        .ink-wave-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, theme('colors.primary-container') 0%, theme('colors.primary-fixed-dim') 100%);
+            /* Simplified sine wave motif using a straight line for now, a real sine wave would need SVG */
+        }
+        
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary');
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- Transactional/Linear screen: No navigation shell rendered. -->
+<main class="flex-1 px-container-margin py-8 max-w-md mx-auto w-full flex flex-col items-center justify-center min-h-screen">
+<!-- Header Section -->
+<div class="text-center mb-section-gap flex flex-col items-center">
+<div class="relative w-20 h-20 mb-4">
+<img class="w-20 h-20 rounded-full object-cover shadow-soft border-4 border-surface-container-lowest" data-alt="A portrait of a smiling young woman with dark curly hair against a vibrant bright blue background, confident and friendly expression, modern minimalist studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC2EL6UxPnSwJNMNwKUfSbo5Y4z_WMr-9cRTzwkJS8YkiBQINqjFCytIVi4kNSvDHD2VpakRWLiM4d2OrfpG4fI18vv8T6owlIsNKh2BuJ5BNIDBpZ_rXaB8dho6eMlj1A9zSP-K9fvsm-ZPYUdtsk5yASSMseu5TVkSoHYS4HYu4H_IrzhD_8KqkkWj6QSsYQCJEE2G6o4u7hgsH6FOEVtGgsuwJYMO-gK4PpHBGI2xWE_CVSO0oo"/>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest rounded-full p-1 shadow-sm border border-outline-variant">
+<span aria-hidden="true" class="text-xl leading-none">🏠</span>
+</div>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-background max-w-[280px]">Maya invited you to a shared pocket.</h1>
+</div>
+<!-- Scrollable Content Canvas -->
+<div class="w-full flex flex-col gap-stack-gap mb-section-gap">
+<!-- Large Ink Card -->
+<div class="ink-wave-bg rounded-card p-6 text-on-primary shadow-soft flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span aria-hidden="true" class="text-2xl">🏠</span>
+<h2 class="font-headline-md text-headline-md">Rent</h2>
+</div>
+<div>
+<span class="font-balance-display text-balance-display block">$1,800</span>
+<span class="font-body-md text-body-md text-primary-fixed-dim">/ month total</span>
+</div>
+<div class="mt-2 pt-4 border-t border-ink-light flex items-center justify-between">
+<span class="font-label-md text-label-md text-tertiary-fixed">Members</span>
+<div class="flex -space-x-3">
+<img class="w-8 h-8 rounded-full object-cover border-2 border-ink" data-alt="Small circular avatar showing a young man with short brown hair against a light grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzRXYk1KSPgsgzfXVfQ9aEcJp7UiF1uV7Kp55mgYgVdtUGYtHCPCuaavZUVwrAMGan7AMHlQu6ywlNqoBopVqh2ywEsGgDzEUVZ37pR5uB6F0mv51T2tFzYgcKGD2eVlusE-Do_436ouxpw9tVfo18TQg7nb0w8mD0TSR2jGZgi2zlLbaAD4vuorRMwcdpM_qCAQrUbRpcuxchWVYw5y2DlJbUjh8SiNJqr4AiaSxGQreSsygZPNfJ"/>
+<img class="w-8 h-8 rounded-full object-cover border-2 border-ink" data-alt="Small circular avatar showing a young woman with glasses against a pale yellow background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiDYgj8rlBQ-HXtmaHF4XIaMx0d4H3AmD_pccfLnDwXynIemATSEYhTTqJZXA8pimdk_8K0et-77tmj5ThKt_S-PP3amZvr4bivjDDJFsvfSSyv8AED9Bw8FDddXlIDT6jzT96tjtzij_YORwHEG3AlsOs8pyf5dMmR81V9jNun87_Pj47ZKz2Qr-eo5wMyB_0gm1krEmUbzbb3NZeYu5Z07efzj9PoR_Im5XO2JAHKtxTIvLq1gyP"/>
+<div class="w-8 h-8 rounded-full border-2 border-ink bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-label-md text-xs">
+<span class="material-symbols-outlined" style="font-size: 16px;">person_add</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Share Breakdown Card -->
+<div class="bg-surface-container-lowest rounded-card p-6 shadow-soft flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-eyebrow text-eyebrow text-outline uppercase tracking-widest mb-1">YOUR SHARE</span>
+<span class="font-numeric-table text-numeric-table text-3xl font-bold text-on-background">$600.00</span>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md">33%</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Due the 1st of each month</p>
+<div class="mt-2 pt-4 border-t border-surface-variant flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-background cursor-pointer" for="autopay-toggle">Auto-pay my share each month</label>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-lowest border-4 appearance-none cursor-pointer border-surface-variant z-10 transition-transform duration-200 ease-in-out translate-x-6 checked:border-primary" id="autopay-toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-200 ease-in bg-primary" for="autopay-toggle"></label>
+</div>
+</div>
+</div>
+<!-- Benefits Card -->
+<div class="bg-surface-container-lowest rounded-card p-6 shadow-soft flex flex-col gap-4">
+<span class="font-eyebrow text-eyebrow text-outline uppercase tracking-widest mb-2">WHAT YOU GET</span>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-surface-container rounded-full p-2 text-primary shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface pt-1">A shared debit card for rent</p>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-surface-container rounded-full p-2 text-primary shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface pt-1">See every payment the group makes</p>
+</div>
+<div class="flex items-start gap-4">
+<div class="bg-surface-container rounded-full p-2 text-primary shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface pt-1">Reminders before rent is due</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footnote -->
+<p class="font-body-md text-body-md text-sm text-outline-variant text-center mb-8 px-4">
+            Shared pockets are joint accounts subject to our terms and conditions. All members have equal access to funds.
+        </p>
+<!-- Fixed Action Bar -->
+<div class="w-full flex flex-col gap-3 mt-auto sticky bottom-0 pt-4 pb-8 bg-gradient-to-t from-surface to-transparent">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-full font-bold shadow-md hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+                Join and add $600
+            </button>
+<button class="w-full bg-transparent text-primary font-label-md text-label-md py-4 rounded-full font-medium hover:bg-surface-variant transition-colors">
+                Decline
+            </button>
+</div>
+</main>
+</body></html>
