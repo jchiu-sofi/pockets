@@ -177,6 +177,9 @@ def main() -> int:
         html, removed = strip_nav(original)
         n_mask, html = rewrite_card_masks(html)
         n_btn, html = rewrite_topbar_buttons(html)
+        n_track, html = rewrite_progress_tracks(html)
+        n_cta, html = rewrite_primary_buttons(html)
+        n_dead, html = remove_desktop_only_header(html)
 
         if stem in WITH_NAV:
             html = ensure_style(html)
@@ -190,6 +193,12 @@ def main() -> int:
             extras.append(f"{n_mask} card mask")
         if n_btn:
             extras.append(f"{n_btn} top-bar buttons")
+        if n_track:
+            extras.append(f"{n_track} tracks")
+        if n_cta:
+            extras.append(f"{n_cta} CTAs")
+        if n_dead:
+            extras.append("dead header")
         if html != original:
             changed += 1
             state += f" (replaced {removed})" if removed else " (added)"
@@ -204,6 +213,112 @@ def main() -> int:
     verb = "would update" if check else "updated"
     print(f"\n{verb} {changed} of 16 screens")
     return 0
+
+
+
+
+# --- Progress tracks -------------------------------------------------------------
+# Six variants: 1.5px and 2px tall, w-full / w-48 / max-w-xs / no width at all, five
+# different track colours, and some missing overflow-hidden so the fill's rounded end
+# poked outside the track. Geometry is normalised; the colour is left alone because
+# a track on a cyan header needs a different value than one on a white card.
+TRACK_GEOMETRY = ("w-full", "h-1.5", "rounded-full", "overflow-hidden")
+# Small fixed widths are sheet drag handles and the iOS home indicator, not tracks.
+NOT_A_TRACK = ("w-2", "w-12", "w-32", "w-20", "w-24", "w-10", "w-48 h-48")
+
+
+def rewrite_progress_tracks(html: str) -> tuple[int, str]:
+    count = 0
+
+    def sub(m):
+        nonlocal count
+        classes = m.group(1)
+        parts = classes.split()
+        if "rounded-full" not in parts:
+            return m.group(0)
+        if not any(h in parts for h in ("h-1.5", "h-2")):
+            return m.group(0)
+        if any(w in parts for w in NOT_A_TRACK):
+            return m.group(0)
+        # Drop the old geometry, keep colour, spacing and positioning.
+        keep = [c for c in parts
+                if not re.match(r"^(w-|max-w-|h-1\.5$|h-2$|overflow-hidden$|rounded-full$)", c)]
+        want = list(TRACK_GEOMETRY) + keep
+        if parts == want:
+            return m.group(0)
+        count += 1
+        return 'class="%s"' % " ".join(want)
+
+    html = re.sub(r'class="([^"]*)"', sub, html)
+    return count, html
+
+
+# --- Primary buttons -------------------------------------------------------------
+# Sixteen different class combinations for the same solid-primary button: padding
+# from py-2 to py-4, four type sizes, three weights. Two canonical variants — a
+# full-width CTA and an inline pill.
+SIZE_RE = re.compile(
+    r"^text-(?:xs|sm|base|lg|xl|\dxl|\[\d+px\]|label-\w+|body-\w+|headline-\w+"
+    r"|balance-display|data-display|data-cents|eyebrow|numeric-table)$")
+PAD_RE = re.compile(r"^(?:p|px|py|pt|pb)-")
+WEIGHT_RE = re.compile(r"^font-(?:thin|light|normal|medium|semibold|bold|extrabold|black)$")
+# A second font-family token on the same button leaves two families fighting.
+FAMILY_RE = re.compile(r"^font-(?:body|headline|balance|data|numeric|eyebrow|label)[\w-]*$")
+
+CTA_FULL = ["py-4", "rounded-full", "font-label-md", "text-label-md", "font-bold"]
+CTA_PILL = ["px-5", "py-2.5", "rounded-full", "font-label-md", "text-label-md", "font-semibold"]
+
+
+def rewrite_primary_buttons(html: str) -> tuple[int, str]:
+    count = 0
+
+    def sub(m):
+        nonlocal count
+        tag, attrs, inner = m.group("tag"), m.group("attrs"), m.group("inner")
+        cls = re.search(r'class="([^"]*)"', attrs)
+        if not cls:
+            return m.group(0)
+        parts = cls.group(1).split()
+        # bg-surface-tint and bg-primary-container both resolve to #00A2C7, the same
+        # fill as bg-primary, so a few CTAs were styled through a different token.
+        if "rounded-full" in parts:
+            for alias, on in (("bg-surface-tint", "text-on-primary"),
+                              ("bg-primary-container", "text-on-primary-container")):
+                if alias in parts:
+                    parts = ["bg-primary" if c == alias else
+                             "text-on-primary" if c == on else c for c in parts]
+        if "bg-primary" not in parts:
+            return m.group(0)
+        # An icon-only round button is not a CTA.
+        if any(x in parts for x in ("w-10", "w-11", "w-12", "w-14")):
+            return m.group(0)
+        full = "w-full" in parts
+        keep = [c for c in parts
+                if not (PAD_RE.match(c) or SIZE_RE.match(c) or WEIGHT_RE.match(c)
+                        or FAMILY_RE.match(c) or c.startswith("rounded"))]
+        want, seen = [], set()
+        for c in keep + (CTA_FULL if full else CTA_PILL):
+            if c not in seen:
+                seen.add(c)
+                want.append(c)
+        if parts == want:
+            return m.group(0)
+        count += 1
+        rebuilt = re.sub(r'class="[^"]*"', 'class="%s"' % " ".join(want), attrs)
+        return "<%s%s>%s</%s>" % (tag, rebuilt, inner, tag)
+
+    html = re.sub(r'<(?P<tag>button|a)(?P<attrs>[^>]*)>(?P<inner>.*?)</(?P=tag)>',
+                  sub, html, flags=re.S)
+    return count, html
+
+
+# --- Dead desktop-only header ----------------------------------------------------
+# Screen 03 carries `<header class="hidden md:flex ...">`, invisible at every mobile
+# width, while building its real top bar inline further down.
+def remove_desktop_only_header(html: str) -> tuple[int, str]:
+    fixed, n = re.subn(r'[ \t]*<header class="hidden md:flex\b.*?</header>[ \t]*\n?', "",
+                       html, flags=re.S)
+    return n, fixed
 
 
 if __name__ == "__main__":
