@@ -115,6 +115,34 @@ LITERALS = {
 
 
 
+# Stitch's HTML export ships a borderRadius scale shifted a step smaller than the
+# one its own design system declares, so every `rounded-xl` card renders at 12px
+# instead of the 24px the DESIGN.md specifies (and `sm`/`md` are dropped entirely,
+# silently falling back to Tailwind's defaults). These are the declared values.
+RADII = {
+    "sm": "0.25rem",
+    "DEFAULT": "0.5rem",
+    "md": "0.75rem",
+    "lg": "1rem",
+    "xl": "1.5rem",
+    "full": "9999px",
+}
+
+
+def rewrite_radii(html: str) -> tuple[str, int]:
+    """Replace the whole borderRadius block with the declared scale."""
+    m = re.search(r'("borderRadius":\s*\{)(.*?)(\n(\s*)\})', html, re.S)
+    if not m:
+        return html, 0
+
+    indent = " " * (len(m.group(4)) + 8)
+    body = ",\n".join(f'{indent}"{k}": "{v}"' for k, v in RADII.items())
+    replacement = f"{m.group(1)}\n{body}{m.group(3)}"
+    if replacement == m.group(0):
+        return html, 0
+    return html[:m.start()] + replacement + html[m.end():], 1
+
+
 def rewrite_tokens(html: str) -> tuple[str, int]:
     """Replace "token": "#hex" pairs inside the tailwind config block."""
     count = 0
@@ -153,6 +181,7 @@ def main() -> int:
         original = path.read_text(encoding="utf-8")
         html, n_tokens = rewrite_tokens(original)
         html, n_literals = rewrite_literals(html)
+        html, n_radii = rewrite_radii(html)
 
         total_tokens += n_tokens
         total_literals += n_literals
@@ -161,6 +190,8 @@ def main() -> int:
             status.append(f"{n_tokens} tokens")
         if n_literals:
             status.append(f"{n_literals} literals")
+        if n_radii:
+            status.append("radii")
         print(f"  {path.name:<30} {', '.join(status) or 'already on brand'}")
 
         if not check and html != original:
