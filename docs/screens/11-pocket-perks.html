@@ -67,7 +67,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -147,6 +147,63 @@
             height: 20px;
             width: 100%;
         }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -187,7 +244,7 @@
 <h3 class="font-eyebrow text-eyebrow text-tertiary mb-4">THIS WEEK</h3>
 <div class="space-y-4">
 <!-- Offer Card 1: Activated -->
-<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4 relative overflow-hidden">
 <div class="flex items-start justify-between">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🍔</div>
@@ -210,7 +267,7 @@
 </div>
 </div>
 <!-- Offer Card 2 -->
-<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
 <div class="flex items-start justify-between">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🎵</div>
@@ -233,7 +290,7 @@
 </div>
 </div>
 <!-- Offer Card 3 -->
-<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col gap-4">
 <div class="flex items-start justify-between">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-xl">🚆</div>
@@ -260,7 +317,7 @@
 <!-- Earned Section -->
 <div class="pt-6 border-t border-outline-variant/30">
 <h3 class="font-eyebrow text-eyebrow text-tertiary mb-4">EARNED</h3>
-<div class="bg-surface-container-lowest rounded-[20px] p-2 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<div class="bg-surface-container-lowest rounded-xl p-2 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
 <div class="flex items-center justify-between p-3 border-b border-outline-variant/20 last:border-0">
 <div class="flex flex-col">
 <span class="font-label-md text-label-md text-on-surface">Five Guys</span>
@@ -273,14 +330,14 @@
 <span class="font-label-md text-label-md text-on-surface">Chipotle</span>
 <span class="font-eyebrow text-eyebrow text-tertiary">Jul 10</span>
 </div>
-<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$2.00</span>
+<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$2</span>
 </div>
 <div class="flex items-center justify-between p-3 border-b border-outline-variant/20 last:border-0">
 <div class="flex flex-col">
 <span class="font-label-md text-label-md text-on-surface">Spotify</span>
 <span class="font-eyebrow text-eyebrow text-tertiary">Jul 1</span>
 </div>
-<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$5.00</span>
+<span class="font-numeric-table text-numeric-table text-[#147a4d]">+$5</span>
 </div>
 </div>
 </div>
@@ -289,27 +346,13 @@
             </p>
 </div>
 </main>
-<!-- BottomNavBar -->
-<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-low text-primary dark:text-primary-fixed font-label-md text-label-md font-headline-md text-headline-md font-black text-primary docked full-width bottom-0 rounded-t-xl shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] shadow-lg hover:bg-surface-container-high scale-95 active:scale-90 transition-transform fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest">
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
-<span class="text-[10px] font-medium">Home</span>
-</button>
-<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-<span class="text-[10px] font-medium">Banking</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">credit_card</span>
-<span class="text-[10px] font-medium">Credit card</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">trending_up</span>
-<span class="text-[10px] font-medium">Invest</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">payments</span>
-<span class="text-[10px] font-medium">Loans</span>
-</button>
+
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
 </nav>
 </body></html>

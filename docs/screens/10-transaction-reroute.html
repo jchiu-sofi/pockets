@@ -76,7 +76,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -178,6 +178,51 @@
             top: -0.42em;
         }
         .money-sym { margin-right: 0.06em; }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 <style>
     body {
@@ -189,7 +234,7 @@
 <!-- Header Block -->
 <header class="bg-primary text-on-primary sticky top-0 z-40 transition-shadow duration-200" id="main-header">
 <div class="flex items-center justify-between px-container-margin h-[72px]">
-<button class="flex items-center justify-center w-11 h-11 rounded-full hover:bg-white/10 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors">
 <span class="material-symbols-outlined">arrow_back_ios_new</span>
 </button>
 <h1 class="font-headline-md text-headline-md">Transaction</h1>
@@ -216,8 +261,8 @@
 </div>
 </section>
 <!-- PAID FROM Card -->
-<section class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
-<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase tracking-wider">PAID FROM</h3>
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">PAID FROM</h3>
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-3">
 <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-xl">
@@ -234,7 +279,7 @@
 </div>
 </section>
 <!-- Amber Banner -->
-<section class="bg-amber-buttercup rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<section class="bg-amber-buttercup rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div class="flex items-start gap-3">
 <span class="material-symbols-outlined text-on-amber-buttercup mt-0.5 fill">receipt_long</span>
 <p class="font-body-md text-body-md text-on-amber-buttercup">Mixed basket? Move part of this to another pocket.</p>
@@ -244,8 +289,8 @@
             </button>
 </section>
 <!-- MOVE TO A DIFFERENT POCKET Card -->
-<section class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] overflow-hidden">
-<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase tracking-wider">MOVE TO A DIFFERENT POCKET</h3>
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] overflow-hidden">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">MOVE TO A DIFFERENT POCKET</h3>
 <div class="flex overflow-x-auto hide-scrollbar gap-3 -mx-5 px-5 pb-2">
 <!-- Pocket Chip 1 -->
 <button class="flex flex-col items-center justify-center min-w-[100px] h-[100px] bg-surface-container-low rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container transition-all flex-shrink-0">
@@ -257,25 +302,25 @@
 <button class="flex flex-col items-center justify-center min-w-[100px] h-[100px] bg-surface-container-low rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container transition-all flex-shrink-0">
 <span class="text-2xl mb-2">🧺</span>
 <span class="font-label-md text-label-md text-on-background text-sm truncate w-full px-2 text-center">Laundry</span>
-<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$30.00</span>
+<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$30</span>
 </button>
 <!-- Pocket Chip 3 -->
 <button class="flex flex-col items-center justify-center min-w-[100px] h-[100px] bg-surface-container-low rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container transition-all flex-shrink-0">
 <span class="text-2xl mb-2">📚</span>
 <span class="font-label-md text-label-md text-on-background text-sm truncate w-full px-2 text-center">Books</span>
-<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$210.00</span>
+<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$210</span>
 </button>
 <!-- Pocket Chip 4 -->
 <button class="flex flex-col items-center justify-center min-w-[100px] h-[100px] bg-surface-container-low rounded-xl border border-transparent hover:border-primary/20 hover:bg-surface-container transition-all flex-shrink-0">
 <span class="text-2xl mb-2">🎉</span>
 <span class="font-label-md text-label-md text-on-background text-sm truncate w-full px-2 text-center">Going Out</span>
-<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$55.00</span>
+<span class="font-numeric-table text-numeric-table text-on-surface-variant text-xs mt-1">$55</span>
 </button>
 </div>
 </section>
 <!-- DETAILS Card -->
-<section class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] mb-8">
-<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase tracking-wider">DETAILS</h3>
+<section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] mb-8">
+<h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">DETAILS</h3>
 <div class="space-y-4">
 <div class="flex justify-between items-center border-b border-outline-variant pb-4 last:border-0 last:pb-0">
 <span class="font-body-md text-body-md text-on-surface-variant">Category</span>
@@ -322,4 +367,12 @@
             }
         });
     </script>
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
+</nav>
 </body></html>

@@ -72,7 +72,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -142,6 +142,51 @@
             transition: transform 0.3s ease;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 <style>
     body {
@@ -153,7 +198,7 @@
 <!-- Top App Bar Navigation Shell -->
 <header class="bg-primary dark:bg-primary flex justify-between items-center px-container-margin w-full docked full-width top-0 h-header-height flat no shadows sticky z-50 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] md:shadow-none">
 <div class="flex items-center gap-inline-gap">
-<button class="text-on-primary hover:opacity-80 transition-opacity duration-200">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors text-on-primary">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
 </button>
 <h1 class="font-headline-md text-headline-md font-black text-on-primary tracking-tight">SoFi Pockets</h1>
@@ -165,14 +210,14 @@
 <!-- Main Content Area -->
 <main class="w-full max-w-md mx-auto md:max-w-2xl px-container-margin pt-stack-gap">
 <!-- Ink Background Panel for Card -->
-<div class="bg-ink rounded-[20px] p-6 relative overflow-hidden shadow-lg mb-8">
+<div class="bg-ink rounded-xl p-6 relative overflow-hidden shadow-lg mb-8">
 <!-- Sine Wave Motif -->
 <div class="absolute top-0 right-0 w-48 h-24 sine-wave-bg opacity-50 transform rotate-12 scale-150 -translate-y-4 translate-x-8"></div>
 <div class="relative z-10 flex flex-col items-center">
 <!-- Virtual Card Representation -->
-<div class="w-full max-w-[340px] h-[214px] bg-primary-container rounded-[16px] p-6 text-on-primary-container shadow-[0px_8px_24px_rgba(0,0,0,0.2)] flex flex-col justify-between relative overflow-hidden border border-white/20">
+<div class="w-full max-w-[340px] h-[214px] bg-primary-container rounded-lg p-6 text-on-primary-container shadow-[0px_8px_24px_rgba(0,0,0,0.2)] flex flex-col justify-between relative overflow-hidden border border-white/20">
 <!-- Card Shine Effect -->
-<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent pointer-events-none rounded-[16px]"></div>
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent pointer-events-none rounded-lg"></div>
 <div class="flex justify-between items-start">
 <span class="font-eyebrow text-eyebrow bg-on-primary-container/10 px-2 py-1 rounded-full uppercase">Virtual</span>
 <span class="font-headline-md text-headline-md font-bold">Food</span>
@@ -211,7 +256,7 @@
 </div>
 </div>
 <!-- Settings List -->
-<div class="bg-surface-container-lowest rounded-[20px] shadow-[0px_4px_20px_rgba(32,23,71,0.06)] overflow-hidden mb-6 flex flex-col divide-y divide-surface-container">
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] overflow-hidden mb-6 flex flex-col divide-y divide-surface-container">
 <!-- Set as Wallet Default -->
 <div class="p-5 flex items-center justify-between hover:bg-surface-bright transition-colors">
 <span class="font-body-md text-body-md text-on-surface">Set as Wallet default</span>
@@ -255,27 +300,13 @@
             This card only spends from your Food pocket. It declines if the pocket is empty.
         </p>
 </main>
-<!-- Bottom Nav Bar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl">
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined mb-1">home</span>
-<span class="font-label-md text-[10px]">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-<span class="font-label-md text-[10px] font-semibold">Banking</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined mb-1">credit_card</span>
-<span class="font-label-md text-[10px]">Credit card</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined mb-1">trending_up</span>
-<span class="font-label-md text-[10px]">Invest</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined mb-1">payments</span>
-<span class="font-label-md text-[10px]">Loans</span>
-</a>
+
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
 </nav>
 </body></html>

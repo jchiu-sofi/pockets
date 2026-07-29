@@ -67,7 +67,7 @@
                             "DEFAULT": "0.5rem",
                             "md": "0.75rem",
                             "lg": "1rem",
-                            "xl": "1.5rem",
+                            "xl": "1.25rem",
                             "full": "9999px"
                     },
                     "spacing": {
@@ -115,6 +115,18 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -150,13 +162,13 @@
 <!-- Notifications Stack -->
 <div class="flex-1 mt-4 px-2 flex flex-col gap-2">
 <!-- Primary Notification (Active) -->
-<div class="bg-white/85 blur-backdrop rounded-[24px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.1)]">
+<div class="bg-white/85 blur-backdrop rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.1)]">
 <div class="flex items-center justify-between mb-2">
 <div class="flex items-center space-x-2">
 <div class="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary text-[14px]">account_balance</span>
 </div>
-<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-wider">SoFi Pockets</span>
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase">SoFi Pockets</span>
 </div>
 <span class="text-xs text-on-surface-variant">now</span>
 </div>
@@ -176,19 +188,19 @@
 </div>
 </div>
 <!-- Secondary Notification (Dimmer, Stacked) -->
-<div class="bg-white/60 blur-backdrop rounded-[24px] p-4 shadow-[0px_2px_10px_rgba(32,23,71,0.05)] scale-[0.98] origin-top opacity-80 -mt-1 z-0">
+<div class="bg-white/60 blur-backdrop rounded-2xl p-4 shadow-[0px_2px_10px_rgba(32,23,71,0.05)] scale-[0.98] origin-top opacity-80 -mt-1 z-0">
 <div class="flex items-center justify-between mb-1">
 <div class="flex items-center space-x-2">
 <div class="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary text-[14px]">account_balance</span>
 </div>
-<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase tracking-wider">SoFi Pockets</span>
+<span class="font-eyebrow text-eyebrow text-on-surface-variant uppercase">SoFi Pockets</span>
 </div>
 <span class="text-xs text-on-surface-variant">2m ago</span>
 </div>
 <div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-tight">
-                            Chipotle $14.20 paid from Food. $2.00 back from Pocket Perks.
+                            Chipotle $14.20 paid from Food. $2 back from Pocket Perks.
                         </p>
 </div>
 </div>

@@ -67,7 +67,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -157,6 +157,51 @@
             top: -0.42em;
         }
         .money-sym { margin-right: 0.06em; }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden pb-[80px]">
@@ -174,7 +219,7 @@
 <main class="flex-1 mt-header-height flex flex-col w-full max-w-md mx-auto relative overflow-hidden">
 <!-- Blue Header Extension (Visual Anchor) -->
 <div class="bg-primary w-full px-container-margin pb-20 pt-6 rounded-b-[40px] relative z-10 flex flex-col items-center shadow-md">
-<div class="text-primary-fixed font-eyebrow text-eyebrow uppercase tracking-wider mb-2">CHECKING</div>
+<div class="text-primary-fixed font-eyebrow text-eyebrow uppercase mb-2">CHECKING</div>
 <div class="font-balance-display text-balance-display text-on-primary flex items-start justify-center"><span class="money-sym">$</span>1,284<span class="money-cents">.40</span></div>
 <div class="mt-4 flex items-center justify-center space-x-3 bg-on-primary/10 rounded-full py-1.5 px-4 backdrop-blur-sm border border-on-primary/20">
 <span class="text-on-primary font-body-md text-body-md opacity-90">$212.60 unallocated</span>
@@ -185,7 +230,7 @@
 <!-- Content Canvas (Overlapping) -->
 <div class="px-container-margin -mt-10 relative z-20 flex flex-col gap-6">
 <!-- Suggested Card Panel -->
-<div class="bg-surface-container-lowest rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] border border-outline-variant flex items-center justify-between group cursor-pointer hover:shadow-lg transition-all duration-300">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] border border-outline-variant flex items-center justify-between group cursor-pointer hover:shadow-lg transition-all duration-300">
 <div class="flex items-center gap-4">
 <div class="w-12 h-12 bg-primary-container/20 rounded-full flex items-center justify-center text-primary shrink-0">
 <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
@@ -204,7 +249,7 @@
 </div>
 <!-- Pocket Perks Strip -->
 <div class="flex flex-col gap-3 -mx-container-margin px-container-margin">
-<h2 class="font-eyebrow text-eyebrow text-outline uppercase tracking-wider pl-1">POCKET PERKS · NEW THIS WEEK</h2>
+<h2 class="font-eyebrow text-eyebrow text-outline uppercase pl-1">POCKET PERKS · NEW THIS WEEK</h2>
 <div class="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
 <div class="shrink-0 w-[240px] bg-secondary-container text-on-secondary-container rounded-xl p-4 snap-start relative overflow-hidden group cursor-pointer hover:opacity-95 transition-opacity">
 <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
@@ -237,12 +282,12 @@
 <!-- Your Pockets Grid -->
 <div class="flex flex-col gap-4 pb-8">
 <div class="flex items-center justify-between pl-1 pr-1">
-<h2 class="font-eyebrow text-eyebrow text-outline uppercase tracking-wider">YOUR POCKETS</h2>
+<h2 class="font-eyebrow text-eyebrow text-outline uppercase">YOUR POCKETS</h2>
 <button class="text-primary font-label-md text-label-md hover:underline">Edit</button>
 </div>
 <div class="grid grid-cols-2 gap-4">
 <!-- Pocket: Food -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-primary-container/30 transition-all duration-300 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-primary-container/30 transition-all duration-300 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-16 h-16 bg-primary-container/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">🍜</div>
@@ -254,11 +299,11 @@
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-primary-container h-full rounded-full" style="width: 42%;"></div>
 </div>
-<div class="font-eyebrow text-[10px] text-outline">$128 left of $300</div>
+<div class="font-body-sm text-[12px] text-outline">$128 left of $300</div>
 </div>
 </div>
 <!-- Pocket: Groceries -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-emerald-500/30 transition-all duration-300 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-emerald-500/30 transition-all duration-300 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">🛒</div>
@@ -270,11 +315,11 @@
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-emerald-500 h-full rounded-full" style="width: 49%;"></div>
 </div>
-<div class="font-eyebrow text-[10px] text-outline">$74 left of $150</div>
+<div class="font-body-sm text-[12px] text-outline">$74 left of $150</div>
 </div>
 </div>
 <!-- Pocket: Rent (Shared) -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">🏠</div>
@@ -298,7 +343,7 @@
 </div>
 </div>
 <!-- Pocket: Books -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-amber-400/30 transition-all duration-300 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-amber-400/30 transition-all duration-300 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-16 h-16 bg-amber-400/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">📚</div>
@@ -310,11 +355,11 @@
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-amber-400 h-full rounded-full" style="width: 52%;"></div>
 </div>
-<div class="font-eyebrow text-[10px] text-outline">$210 left of $400</div>
+<div class="font-body-sm text-[12px] text-outline">$210 left of $400</div>
 </div>
 </div>
 <!-- Pocket: Transit (Warning) -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-error/20 cursor-pointer hover:shadow-lg hover:border-error/40 transition-all duration-300 relative overflow-hidden bg-error/5">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-error/20 cursor-pointer hover:shadow-lg hover:border-error/40 transition-all duration-300 relative overflow-hidden bg-error/5">
 <div class="absolute top-0 right-0 w-16 h-16 bg-outline/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">🚌</div>
@@ -333,7 +378,7 @@
 </div>
 </div>
 <!-- Pocket: Spring Break (Shared) -->
-<div class="bg-surface-container-lowest rounded-[20px] p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-pink-500/30 transition-all duration-300 relative overflow-hidden">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex flex-col border border-outline-variant cursor-pointer hover:shadow-lg hover:border-pink-500/30 transition-all duration-300 relative overflow-hidden">
 <div class="absolute top-0 right-0 w-16 h-16 bg-pink-500/10 rounded-bl-[100%]"></div>
 <div class="flex items-center justify-between mb-3">
 <div class="text-2xl">✈️</div>
@@ -357,7 +402,7 @@
 </div>
 </div>
 <!-- New Pocket Button -->
-<button class="bg-transparent rounded-[20px] p-4 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary hover:bg-surface-container-lowest/50 transition-all duration-300 group min-h-[140px]">
+<button class="bg-transparent rounded-xl p-4 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary hover:bg-surface-container-lowest/50 transition-all duration-300 group min-h-[140px]">
 <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-primary-container/10 group-hover:text-primary transition-colors mb-2">
 <span class="material-symbols-outlined text-2xl font-light">add</span>
 </div>
@@ -367,30 +412,8 @@
 </div>
 </div>
 </main>
-<!-- BottomNavBar (JSON execution) -->
 <!-- active index logic: Banking is active -->
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest docked full-width bottom-0 rounded-t-xl shadow-lg shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] border-t-0" id="bottom-nav">
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 w-16">
-<span class="material-symbols-outlined mb-1">home</span>
-<span class="font-label-md text-[10px] leading-[12px]">Home</span>
-</button>
-<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-95 active:scale-90 transition-transform hover:bg-surface-container-high w-20">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-<span class="font-label-md text-[10px] leading-[12px] font-bold">Banking</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 w-16">
-<span class="material-symbols-outlined mb-1">credit_card</span>
-<span class="font-label-md text-[10px] leading-[12px]">Credit card</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 w-16">
-<span class="material-symbols-outlined mb-1">trending_up</span>
-<span class="font-label-md text-[10px] leading-[12px]">Invest</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 w-16">
-<span class="material-symbols-outlined mb-1">payments</span>
-<span class="font-label-md text-[10px] leading-[12px]">Loans</span>
-</button>
-</nav>
+
 <style>
         /* Utility for horizontal scroll snap */
         .hide-scrollbar::-webkit-scrollbar {
@@ -415,4 +438,12 @@
             }
         });
     </script>
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
+</nav>
 </body></html>

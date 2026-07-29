@@ -234,7 +234,7 @@ RADII = {
     "DEFAULT": "0.5rem",
     "md": "0.75rem",
     "lg": "1rem",
-    "xl": "1.5rem",
+    "xl": "1.25rem",   # 20px — the card radius DESIGN.md specifies
     "full": "9999px",
 }
 
@@ -302,6 +302,52 @@ def rewrite_theme_calls(html: str) -> tuple[str, int]:
     return fixed, n
 
 
+# Cards were drawn at four different radii depending on the screen: rounded-xl,
+# rounded-[20px], rounded-2xl, rounded-card and rounded-[16px] all appear on card
+# surfaces. Collapse the one-off spellings onto the scale. 2xl/3xl are left alone —
+# those are the bottom-sheet corners, which are deliberately larger.
+RADIUS_ALIASES = {
+    "rounded-[20px]": "rounded-xl",
+    "rounded-card": "rounded-xl",
+    "rounded-[16px]": "rounded-lg",
+    "rounded-[24px]": "rounded-2xl",
+}
+
+# An eyebrow's letter-spacing belongs to the `eyebrow` token (0.08em). Ad-hoc
+# tracking utilities on eyebrow elements made the same all-caps label render at three
+# different spacings across screens. Tight tracking on headlines is kept: the brand
+# guidelines call for -10 to -25 on display type.
+EYEBROW_TRACKING = ("tracking-widest", "tracking-wider", "tracking-wide")
+
+
+def rewrite_radius_aliases(html: str) -> tuple[str, int]:
+    count = 0
+    for old, new in RADIUS_ALIASES.items():
+        n = html.count(old)
+        if n:
+            html = html.replace(old, new)
+            count += n
+    return html, count
+
+
+def rewrite_eyebrow_tracking(html: str) -> tuple[str, int]:
+    count = 0
+
+    def sub(m: re.Match) -> str:
+        nonlocal count
+        classes = m.group(1)
+        if "eyebrow" not in classes:
+            return m.group(0)
+        kept = [c for c in classes.split() if c not in EYEBROW_TRACKING]
+        if len(kept) == len(classes.split()):
+            return m.group(0)
+        count += 1
+        return 'class="%s"' % " ".join(kept)
+
+    html = re.sub(r'class="([^"]*)"', sub, html)
+    return html, count
+
+
 def rewrite_tokens(html: str) -> tuple[str, int]:
     """Replace "token": "#hex" pairs inside the tailwind config block."""
     count = 0
@@ -346,6 +392,8 @@ def main() -> int:
         html, n_brackets = rewrite_bracketed_tokens(html)
         html, n_borders = rewrite_borders(html)
         html, n_theme = rewrite_theme_calls(html)
+        html, n_radii_alias = rewrite_radius_aliases(html)
+        html, n_track = rewrite_eyebrow_tracking(html)
 
         total_tokens += n_tokens
         total_literals += n_literals
@@ -366,6 +414,10 @@ def main() -> int:
             status.append(f"{n_borders} borders")
         if n_theme:
             status.append(f"{n_theme} theme() calls")
+        if n_radii_alias:
+            status.append(f"{n_radii_alias} radius aliases")
+        if n_track:
+            status.append(f"{n_track} eyebrow tracking")
         print(f"  {path.name:<30} {', '.join(status) or 'already on brand'}")
 
         if not check and html != original:

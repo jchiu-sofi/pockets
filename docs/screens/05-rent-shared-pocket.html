@@ -67,7 +67,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -175,6 +175,51 @@
             top: -0.42em;
         }
         .money-sym { margin-right: 0.06em; }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 <style>
     body {
@@ -186,7 +231,7 @@
 <!-- Header Block in Eggplant -->
 <header class="eggplant-bg text-on-primary pt-12 pb-6 px-container-margin sticky top-0 z-40 sine-wave-border">
 <div class="flex justify-between items-center mb-6">
-<button class="text-on-primary hover:opacity-80 transition-opacity">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors text-on-primary">
 <span class="material-symbols-outlined text-2xl">arrow_back_ios</span>
 </button>
 <div class="flex items-center gap-2">
@@ -194,13 +239,13 @@
 <h1 class="font-headline-md text-headline-md font-bold">Rent</h1>
 <span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-0.5 rounded-sm tracking-wider uppercase ml-2">SHARED</span>
 </div>
-<button class="text-on-primary hover:opacity-80 transition-opacity">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors text-on-primary">
 <span class="material-symbols-outlined text-2xl">more_horiz</span>
 </button>
 </div>
 <div class="flex flex-col items-center justify-center text-center">
 <h2 class="font-balance-display text-balance-display mb-1"><span class="money-sym">$</span>1,650</h2>
-<p class="text-primary-fixed-dim font-body-md text-body-md opacity-90">of $1,800 due Aug 1</p>
+<p class="text-primary-fixed-dim font-body-md text-body-md opacity-80">of $1,800 due Aug 1</p>
 <!-- Progress Bar -->
 <div class="w-full max-w-xs bg-surface-container-highest h-2 rounded-full mt-4 overflow-hidden">
 <div class="bg-primary-container h-full rounded-full w-[92%] transition-all duration-1000 ease-out"></div>
@@ -231,7 +276,7 @@
             </button>
 </div>
 <!-- Members Card -->
-<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-outline-variant relative z-10 mt-2">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant relative z-10 mt-2">
 <h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">MEMBERS</h3>
 <div class="flex flex-col gap-5">
 <!-- Sammy Row -->
@@ -294,13 +339,13 @@
 </div>
 </section>
 <!-- Virtual Card Section -->
-<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-outline-variant">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant">
 <div class="eggplant-bg rounded-xl p-5 text-on-primary shadow-md relative overflow-hidden mb-4">
 <!-- Decorative elements for the card -->
 <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10"></div>
 <div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-8 -mb-8"></div>
 <div class="flex justify-between items-start mb-8 relative z-10">
-<p class="font-eyebrow text-eyebrow tracking-widest text-primary-fixed-dim">RENT · SHARED</p>
+<p class="font-eyebrow text-eyebrow text-primary-fixed-dim">RENT · SHARED</p>
 <span class="material-symbols-outlined opacity-80 text-3xl">contactless</span>
 </div>
 <div class="flex justify-between items-end relative z-10">
@@ -314,7 +359,7 @@
              </button>
 </section>
 <!-- Activity Card -->
-<section class="bg-surface-container-lowest rounded-card shadow-sm p-5 border border-outline-variant mb-6">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant mb-6">
 <h3 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 uppercase">ACTIVITY</h3>
 <div class="flex flex-col gap-4">
 <!-- Row 1 -->
@@ -326,7 +371,7 @@
 <p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jul 1</p>
 </div>
 </div>
-<p class="font-numeric-table text-numeric-table font-semibold text-on-surface">−$1,800.00</p>
+<p class="font-numeric-table text-numeric-table font-semibold text-on-surface">−$1,800</p>
 </div>
 <!-- Divider -->
 <hr class="border-outline-variant my-1"/>
@@ -339,7 +384,7 @@
 <p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jun 28</p>
 </div>
 </div>
-<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600.00</p>
+<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600</p>
 </div>
 <!-- Divider -->
 <hr class="border-outline-variant my-1"/>
@@ -352,7 +397,7 @@
 <p class="font-body-md text-body-md text-xs text-on-surface-variant mt-0.5">Jun 27</p>
 </div>
 </div>
-<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600.00</p>
+<p class="font-numeric-table text-numeric-table font-semibold text-[#147D3B]">+$600</p>
 </div>
 </div>
 </section>
@@ -361,50 +406,9 @@
             A shared pocket is a joint account...
         </p>
 </main>
-<!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl hidden md:hidden block">
-<!-- Home -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined text-2xl">home</span>
-<span class="font-label-md text-label-md text-[10px] mt-1">Home</span>
-</a>
-<!-- Banking (Active) -->
-<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high transition-transform scale-95 active:scale-90" href="#">
-<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-<span class="font-label-md text-label-md text-[10px] mt-1 font-bold">Banking</span>
-</a>
-<!-- Credit card -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined text-2xl">credit_card</span>
-<span class="font-label-md text-label-md text-[10px] mt-1">Credit card</span>
-</a>
-<!-- Invest -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined text-2xl">trending_up</span>
-<span class="font-label-md text-label-md text-[10px] mt-1">Invest</span>
-</a>
-<!-- Loans -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 p-2 rounded-lg" href="#">
-<span class="material-symbols-outlined text-2xl">payments</span>
-<span class="font-label-md text-label-md text-[10px] mt-1">Loans</span>
-</a>
-</nav>
+
 <!-- Desktop Navigation (Hidden on Mobile) -->
-<nav class="hidden md:flex justify-between items-center px-container-margin w-full bg-primary dark:bg-primary h-header-height fixed top-0 z-50">
-<div class="flex items-center gap-8">
-<a class="font-headline-md text-headline-md font-black text-on-primary" href="#">SoFi Pockets</a>
-<div class="flex gap-6">
-<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Home</a>
-<a class="font-label-md text-label-md text-on-primary hover:opacity-80 transition-opacity font-bold" href="#">Banking</a>
-<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Credit card</a>
-<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Invest</a>
-<a class="font-label-md text-label-md text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">Loans</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover border-2 border-on-primary" data-alt="A small, circular profile picture of a young man with brown hair smiling against a solid warm background. The lighting is soft and flattering, suitable for a modern digital avatar. The aesthetic is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpWI7IrXu5vUxmazWAc7lKGdmzldmVpvaL6o1ygLrgJdu-m97-nok4QgTLLjRAWHutHCkfMyJGQps3QZx1aMmAkPiTYQOoAEACgm6_b8ws7KUT0VokXs7Kmujrz8NOCFv5-LVnGBKYd2S7IGAe2C607QOKXnFPL7iRa4YY37-3l46n9Zi8LGQDEEi2KG_mZtDTMT9vC2BHtvxqaRl4Q0YHlWmZ2N3OhRtDxEgsrrANr_16SbeAoDGQ"/>
-</div>
-</nav>
+
 <style>
         /* Hide mobile header if on desktop */
         @media (min-width: 768px) {
@@ -418,4 +422,12 @@
             }
         }
     </style>
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
+</nav>
 </body></html>

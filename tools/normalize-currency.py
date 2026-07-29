@@ -140,6 +140,44 @@ def rewrite_row_amounts(html: str) -> tuple[str, int]:
     return html, count
 
 
+
+# The caption under a hero balance ("of $300 this month") and the caption under a
+# pocket tile ("$128 left of $300") each came out at a different size, opacity and
+# font per screen. Two tiers, one treatment each: 16px at 80% opacity for the hero
+# subtitle, 12px body for the tile caption. Colour is left alone — these sit on
+# cyan, Buttercup and Ink headers, so each needs its own contrast pairing. `font-
+# eyebrow` is dropped from captions: per the brand guidelines the eyebrow style is
+# for all-caps labels, not sentence-case captions.
+CAPTIONS = [
+    # (before, after)
+    ("font-body-sm text-body-sm text-surface-container-lowest/80 mt-1",
+     "font-body-md text-body-md text-surface-container-lowest opacity-80 mt-1"),
+    ("font-body-md text-body-md opacity-70",
+     "font-body-md text-body-md opacity-80"),
+    ("text-primary-fixed-dim font-body-md text-body-md opacity-90",
+     "text-primary-fixed-dim font-body-md text-body-md opacity-80"),
+    ("font-body-md text-body-md text-on-primary opacity-90 mb-4",
+     "font-body-md text-body-md text-on-primary opacity-80 mb-4"),
+    ("font-eyebrow text-[10px] text-outline",
+     "font-body-sm text-[12px] text-outline"),
+    ("font-body-sm text-body-sm text-outline text-xs mt-1",
+     "font-body-sm text-[12px] text-outline mt-1"),
+]
+
+
+def rewrite_captions(html: str) -> tuple[str, int]:
+    count = 0
+    for before, after in CAPTIONS:
+        n = html.count(before)
+        if n:
+            html = html.replace(before, after)
+            count += n
+    # A round amount inside a caption keeps its .00 because it is not a standalone
+    # figure; the style guide drops it either way.
+    html, n = re.subn(r"(\$\d{1,3}(?:,\d{3})*)\.00\b", r"\1", html)
+    return html, count + n
+
+
 def ensure_style(html: str) -> tuple[str, int]:
     if ".money-cents" in html:
         return html, 0
@@ -157,7 +195,8 @@ def main() -> int:
         html, n_hero = rewrite_hero(original)
         html, n_split = rewrite_split_sign(html)
         html, n_rows = rewrite_row_amounts(html)
-        if n_hero or n_split or n_rows:
+        html, n_caps = rewrite_captions(html)
+        if n_hero or n_split or n_rows or n_caps:
             html, _ = ensure_style(html)
         totals = [t + n for t, n in zip(totals, (n_hero, n_split, n_rows))]
 
@@ -168,6 +207,8 @@ def main() -> int:
             bits.append(f"{n_split} split-sign")
         if n_rows:
             bits.append(f"{n_rows} row")
+        if n_caps:
+            bits.append(f"{n_caps} caption")
         print(f"  {path.name:<30} {', '.join(bits) or 'consistent'}")
 
         if not check and html != original:

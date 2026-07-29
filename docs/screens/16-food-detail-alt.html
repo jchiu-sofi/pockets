@@ -67,7 +67,7 @@
                       "DEFAULT": "0.5rem",
                       "md": "0.75rem",
                       "lg": "1rem",
-                      "xl": "1.5rem",
+                      "xl": "1.25rem",
                       "full": "9999px"
               },
               "spacing": {
@@ -177,6 +177,51 @@
             top: -0.42em;
         }
         .money-sym { margin-right: 0.06em; }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 <style>
     body {
@@ -189,18 +234,18 @@
 <div class="bg-primary-container text-on-primary w-full pb-8 pt-4 rounded-b-3xl shadow-md relative z-10">
 <!-- TopAppBar (Simplified for detail view) -->
 <div class="flex justify-between items-center px-container-margin w-full h-header-height h-auto pb-4">
-<button class="text-on-primary hover:opacity-80 transition-opacity duration-200">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors text-on-primary">
 <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
 </button>
 <h1 class="font-headline-md text-headline-md font-black text-on-primary flex items-center gap-2">🍜 Food</h1>
-<button class="text-on-primary hover:opacity-80 transition-opacity duration-200">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors text-on-primary">
 <span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
 </button>
 </div>
 <!-- Balance Info -->
 <div class="px-container-margin text-center">
 <div class="font-balance-display text-balance-display text-on-primary mb-1"><span class="money-sym">$</span>128<span class="money-cents">.40</span></div>
-<p class="font-body-md text-body-md text-on-primary opacity-90 mb-4">of $300 this month</p>
+<p class="font-body-md text-body-md text-on-primary opacity-80 mb-4">of $300 this month</p>
 <!-- Progress Bar -->
 <div class="w-full bg-primary-fixed-dim/30 rounded-full h-1.5 mb-6">
 <div class="bg-on-primary h-1.5 rounded-full" style="width: 42%;"></div>
@@ -219,8 +264,8 @@
 <!-- Main Content Area -->
 <main class="px-container-margin pt-stack-gap space-y-stack-gap relative z-0 mt-[-20px]">
 <!-- Virtual Card Section -->
-<section class="bg-surface-container-lowest rounded-[20px] shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5">
-<div class="bg-gradient-to-br from-primary-container to-primary rounded-[16px] p-5 text-on-primary shadow-sm relative overflow-hidden h-[180px] flex flex-col justify-between mb-4">
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5">
+<div class="bg-gradient-to-br from-primary-container to-primary rounded-lg p-5 text-on-primary shadow-sm relative overflow-hidden h-[180px] flex flex-col justify-between mb-4">
 <!-- Abstract Sine Wave Motif -->
 <svg class="absolute bottom-0 left-0 w-full opacity-20" viewbox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path d="M0,160 C320,300,420,0,740,160 C1060,320,1120,0,1440,160" fill="none" stroke="#fff" stroke-width="4"></path></svg>
 <div class="flex justify-between items-start relative z-10">
@@ -247,7 +292,7 @@
 </div>
 </section>
 <!-- Auto-Fund Settings -->
-<section class="bg-surface-container-lowest rounded-[20px] shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5">
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5">
 <h2 class="font-eyebrow text-eyebrow text-on-surface-variant mb-4">AUTO-FUND</h2>
 <div class="flex items-center justify-between">
 <div class="pr-4">
@@ -261,7 +306,7 @@
 </div>
 </section>
 <!-- Transactions -->
-<section class="bg-surface-container-lowest rounded-[20px] shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5 mb-6">
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(32,23,71,0.06)] p-5 mb-6">
 <div class="flex justify-between items-center mb-4">
 <h2 class="font-eyebrow text-eyebrow text-on-surface-variant">THIS MONTH</h2>
 <a class="font-label-md text-label-md text-primary hover:underline" href="#">See all</a>
@@ -306,7 +351,7 @@
 </div>
 </div>
 <div class="text-right">
-<p class="font-numeric-table text-numeric-table text-on-surface">−$45.00</p>
+<p class="font-numeric-table text-numeric-table text-on-surface">−$45</p>
 </div>
 </div>
 <div class="h-[1px] bg-outline-variant/30 w-full"></div>
@@ -326,27 +371,13 @@
 </div>
 </section>
 </main>
-<!-- BottomNavBar (Hidden on desktop via CSS, 'Banking' selected) -->
-<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container-lowest shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] rounded-t-xl md:hidden" id="bottom-nav">
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 w-16 h-14 rounded-xl">
-<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
-<span class="font-label-md text-[10px]">Home</span>
-</button>
-<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform scale-95 active:scale-90 w-16 h-14">
-<span class="material-symbols-outlined mb-1" data-icon="account_balance" data-weight="fill">account_balance</span>
-<span class="font-label-md text-[10px]">Banking</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 w-16 h-14 rounded-xl">
-<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
-<span class="font-label-md text-[10px]">Credit card</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 w-16 h-14 rounded-xl">
-<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
-<span class="font-label-md text-[10px]">Invest</span>
-</button>
-<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-transform scale-95 active:scale-90 w-16 h-14 rounded-xl">
-<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
-<span class="font-label-md text-[10px]">Loans</span>
-</button>
+
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
 </nav>
 </body></html>

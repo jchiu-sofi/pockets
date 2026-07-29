@@ -69,7 +69,7 @@
                             "DEFAULT": "0.5rem",
                             "md": "0.75rem",
                             "lg": "1rem",
-                            "xl": "1.5rem",
+                            "xl": "1.25rem",
                             "full": "9999px"
                     },
                     "spacing": {
@@ -126,6 +126,51 @@
             top: -0.42em;
         }
         .money-sym { margin-right: 0.06em; }
+    
+        /* Canonical bottom tab bar — see tools/normalize-chrome.py. Plain CSS so it
+           renders identically across screens that each ship their own Tailwind
+           config. */
+        .bottom-nav {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 50;
+            display: flex;
+            background: #FFFFFF;
+            box-shadow: 0 -4px 20px rgba(32, 23, 71, 0.06);
+            padding: 8px 0 10px;
+        }
+        .bottom-nav__item {
+            flex: 1 1 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: #53565A;
+            font-family: Inter, system-ui, sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        .bottom-nav__item .material-symbols-outlined {
+            font-size: 24px;
+            line-height: 1;
+        }
+        .bottom-nav__item[aria-current="page"] {
+            color: #201747;
+            font-weight: 700;
+        }
+        .bottom-nav__item[aria-current="page"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Keep content clear of the bar. Lower specificity than a Tailwind
+           utility, so a screen that already sets its own padding still wins. */
+        body { padding-bottom: 84px; }
     </style>
 <style>
     body {
@@ -148,17 +193,17 @@
 <!-- Header Block (Mobile Sticky) -->
 <div class="bg-tertiary-fixed text-on-tertiary-fixed pt-12 pb-6 px-container-margin rounded-b-[32px] md:rounded-3xl md:mt-6 shadow-sm sticky top-0 z-40 md:relative md:top-auto">
 <div class="flex justify-between items-center mb-8">
-<button class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors">
 <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
 </button>
 <h1 class="font-headline-md text-headline-md text-center flex-1">🚌 Transit</h1>
-<button class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full transition-colors">
 <span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
 </button>
 </div>
 <div class="flex flex-col items-center justify-center space-y-2 mb-6">
 <div class="font-balance-display text-balance-display"><span class="money-sym">$</span>18<span class="money-cents">.50</span></div>
-<div class="font-body-md text-body-md opacity-70">of $80.00 goal</div>
+<div class="font-body-md text-body-md opacity-80">of $80 goal</div>
 </div>
 <!-- Progress Bar -->
 <div class="w-full bg-surface-container-lowest/40 rounded-full h-1.5 mb-2 overflow-hidden">
@@ -189,11 +234,11 @@
 <path d="M0,10 Q25,20 50,10 T100,10 L100,20 L0,20 Z" fill="#00A2C7"></path>
 </svg>
 <div class="flex justify-between items-start relative z-10">
-<div class="font-eyebrow text-eyebrow text-on-tertiary-fixed tracking-wider">TRANSIT</div>
+<div class="font-eyebrow text-eyebrow text-on-tertiary-fixed">TRANSIT</div>
 <div class="font-eyebrow text-eyebrow bg-surface-container-lowest/50 text-on-surface px-2 py-1 rounded-md backdrop-blur-sm">VIRTUAL</div>
 </div>
 <div class="font-numeric-table text-numeric-table text-on-tertiary-fixed tracking-widest relative z-10 mt-auto text-lg">
-                        •••• •••• •••• 5521
+                        •••• 5521
                     </div>
 </div>
 <button class="w-full bg-[#000000] text-[#FFFFFF] font-label-md text-label-md py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
@@ -203,7 +248,7 @@
 </section>
 <!-- Auto Fund Toggle -->
 <section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)] flex justify-between items-center">
-<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider">AUTO-FUND</div>
+<div class="font-eyebrow text-eyebrow text-on-surface">AUTO-FUND</div>
 <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
 <input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-lowest border-4 border-primary appearance-none cursor-pointer z-10 top-0 left-0 transition-transform duration-300 transform translate-x-6 checked:border-primary checked:bg-surface-container-lowest" id="toggle1" name="toggle" type="checkbox"/>
 <label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle1"></label>
@@ -211,7 +256,7 @@
 </section>
 <!-- Transactions List -->
 <section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
-<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider mb-4 border-b border-outline-variant pb-2">THIS MONTH</div>
+<div class="font-eyebrow text-eyebrow text-on-surface mb-4 border-b border-outline-variant pb-2">THIS MONTH</div>
 <div class="space-y-4">
 <!-- Transaction 1 -->
 <div class="flex items-center justify-between">
@@ -253,29 +298,7 @@
 </section>
 </div>
 </main>
-<!-- Bottom Navigation (Mobile) -->
-<nav class="md:hidden bg-surface-container-lowest text-primary font-label-md text-label-md docked full-width bottom-0 rounded-t-xl shadow-[0px_-4px_20px_rgba(32,23,71,0.06)] shadow-lg fixed w-full z-50 flex justify-around items-center px-2 py-3 pb-safe">
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
-<span class="text-[10px]">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-high scale-95 active:scale-90 transition-transform min-w-[64px]" href="#">
-<span class="material-symbols-outlined mb-1 symbol-fill" data-icon="account_balance">account_balance</span>
-<span class="text-[10px] font-semibold">Banking</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="credit_card">credit_card</span>
-<span class="text-[10px]">Credit card</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
-<span class="text-[10px]">Invest</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high scale-95 active:scale-90 transition-transform rounded-lg p-2 min-w-[64px]" href="#">
-<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
-<span class="text-[10px]">Loans</span>
-</a>
-</nav>
+
 <style>
         /* Custom toggle switch CSS since standard Tailwind form plugin might not cover this specific look perfectly without extra classes */
         .toggle-checkbox:checked {
@@ -292,4 +315,12 @@
             padding-bottom: env(safe-area-inset-bottom, 12px);
         }
     </style>
+<!-- BottomNav: canonical, generated by tools/normalize-chrome.py -->
+<nav class="bottom-nav" aria-label="Primary">
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+    <a class="bottom-nav__item" href="#" aria-current="page"><span class="material-symbols-outlined">paid</span><span>Banking</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">credit_card</span><span>Credit card</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">bar_chart</span><span>Invest</span></a>
+    <a class="bottom-nav__item" href="#"><span class="material-symbols-outlined">workspace_premium</span><span>Loans</span></a>
+</nav>
 </body></html>
