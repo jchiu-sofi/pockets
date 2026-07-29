@@ -165,6 +165,18 @@
                 display: none !important;
             }
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -187,9 +199,7 @@
 </div>
 <!-- Balance Info -->
 <div class="px-container-margin text-center">
-<div class="font-balance-display text-balance-display text-on-primary mb-1">
-                $128.<span class="text-headline-lg font-headline-lg align-top relative top-[-6px]">40</span>
-</div>
+<div class="font-balance-display text-balance-display text-on-primary mb-1"><span class="money-sym">$</span>128<span class="money-cents">.40</span></div>
 <p class="font-body-md text-body-md text-on-primary opacity-90 mb-4">of $300 this month</p>
 <!-- Progress Bar -->
 <div class="w-full bg-primary-fixed-dim/30 rounded-full h-1.5 mb-6">

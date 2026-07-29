@@ -156,6 +156,18 @@
         ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 4px; }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -282,8 +294,7 @@
 <!-- Amount Input Area -->
 <div class="flex-1 flex flex-col items-center justify-center min-h-[160px]">
 <div class="flex items-baseline justify-center text-primary mb-2">
-<span class="font-balance-display text-balance-display mr-1">$</span>
-<span class="font-balance-display text-balance-display tracking-tight" id="amount-display">40.00</span>
+<span class="font-balance-display text-balance-display mr-1"><span class="money-sym">$</span>40</span>
 </div>
 <p class="font-label-md text-label-md text-on-surface-variant">Food will have $88.40 left</p>
 <!-- Quick Pills -->

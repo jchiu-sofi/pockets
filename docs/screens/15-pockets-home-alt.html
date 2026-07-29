@@ -131,6 +131,18 @@
         .material-symbols-outlined.fill {
             font-variation-settings: 'FILL' 1;
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -155,9 +167,7 @@
 <!-- Header Content specific to Pockets -->
 <div class="pt-4 pb-12 flex flex-col">
 <div class="font-eyebrow text-eyebrow text-on-primary/80 uppercase tracking-widest mb-2">CHECKING</div>
-<div class="font-data-display text-data-display text-on-primary mb-4">
-                $1,284.<span class="text-data-cents align-super">40</span>
-</div>
+<div class="font-data-display text-data-display text-on-primary mb-4"><span class="money-sym">$</span>1,284<span class="money-cents">.40</span></div>
 <div class="flex justify-between items-center bg-primary-container/30 rounded-full py-2 px-4 w-full">
 <div class="font-body-sm text-body-sm text-on-primary">$212.60 unallocated</div>
 <button class="bg-surface-container-lowest text-primary rounded-full px-4 py-1.5 font-body-sm text-body-sm font-semibold active:scale-95 transition-transform shadow-sm">
@@ -239,9 +249,7 @@
 </div>
 <div class="space-y-1">
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Food</h4>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $128.<span class="text-data-cents align-super">40</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>128<span class="money-cents">.40</span></div>
 <div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
 <div class="bg-pocket-cyan h-full rounded-full" style="width: 42%;"></div>
 </div>
@@ -255,9 +263,7 @@
 </div>
 <div class="space-y-1">
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Groceries</h4>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $74.<span class="text-data-cents align-super">12</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>74<span class="money-cents">.12</span></div>
 <div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
 <div class="bg-pocket-green h-full rounded-full" style="width: 49%;"></div>
 </div>
@@ -280,9 +286,7 @@
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Rent</h4>
 <span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Shared</span>
 </div>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $1,650.<span class="text-data-cents align-super">00</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>1,650</div>
 </div>
 </div>
 <!-- Books -->
@@ -292,9 +296,7 @@
 </div>
 <div class="space-y-1">
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Books</h4>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $210.<span class="text-data-cents align-super">00</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>210</div>
 <div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
 <div class="bg-pocket-buttercup h-full rounded-full" style="width: 52%;"></div>
 </div>
@@ -309,9 +311,7 @@
 </div>
 <div class="space-y-1">
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold">Transit</h4>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $18.<span class="text-data-cents align-super">50</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>18<span class="money-cents">.50</span></div>
 <div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden mt-2">
 <div class="bg-amber-500 h-full rounded-full" style="width: 15%;"></div>
 </div>
@@ -333,9 +333,7 @@
 <div class="flex items-center gap-1">
 <h4 class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Spring Break</h4>
 </div>
-<div class="font-data-display text-data-display text-on-surface text-xl">
-                            $340.<span class="text-data-cents align-super">00</span>
-</div>
+<div class="font-data-display text-data-display text-on-surface text-xl"><span class="money-sym">$</span>340</div>
 <span class="inline-block bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider mt-2">Shared</span>
 </div>
 </div>

@@ -136,6 +136,18 @@
             transform: translateX(100%);
             border-color: white;
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -163,7 +175,7 @@
 <!-- Central Amount -->
 <div class="relative z-10 text-center flex flex-col items-center">
 <div class="flex items-start justify-center">
-<span class="font-data-display text-data-display text-surface-container-lowest tracking-tight">$128</span>
+<span class="font-data-display text-data-display text-surface-container-lowest tracking-tight"><span class="money-sym">$</span>128</span>
 <span class="font-data-cents text-data-cents text-surface-container-lowest mt-1">.40</span>
 </div>
 <p class="font-body-sm text-body-sm text-surface-container-lowest/80 mt-1">of $300 this month</p>
@@ -252,7 +264,7 @@
 </div>
 </div>
 <div class="text-right">
-<p class="font-data-display text-[15px] font-semibold text-on-surface">−$14.<span class="text-[10px]">20</span></p>
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$14.20</p>
 </div>
 </div>
 <!-- Transaction Item 2 -->
@@ -265,7 +277,7 @@
 </div>
 </div>
 <div class="text-right">
-<p class="font-data-display text-[15px] font-semibold text-on-surface">−$16.<span class="text-[10px]">85</span></p>
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$16.85</p>
 </div>
 </div>
 <!-- Transaction Item 3 -->
@@ -280,7 +292,7 @@
 </div>
 </div>
 <div class="text-right">
-<p class="font-data-display text-[15px] font-semibold text-on-surface">−$45.<span class="text-[10px]">00</span></p>
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$45.00</p>
 </div>
 </div>
 <!-- Transaction Item 4 -->
@@ -293,7 +305,7 @@
 </div>
 </div>
 <div class="text-right">
-<p class="font-data-display text-[15px] font-semibold text-on-surface">−$11.<span class="text-[10px]">75</span></p>
+<p class="font-data-display text-[15px] font-semibold text-on-surface">−$11.75</p>
 </div>
 </div>
 </div>

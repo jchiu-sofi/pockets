@@ -163,6 +163,18 @@
             background-repeat: repeat-x;
         }
         /* Overriding specific hex for specific requested feature */
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -187,7 +199,7 @@
 </button>
 </div>
 <div class="flex flex-col items-center justify-center text-center">
-<h2 class="font-balance-display text-balance-display mb-1">$1,650.00</h2>
+<h2 class="font-balance-display text-balance-display mb-1"><span class="money-sym">$</span>1,650</h2>
 <p class="text-primary-fixed-dim font-body-md text-body-md opacity-90">of $1,800 due Aug 1</p>
 <!-- Progress Bar -->
 <div class="w-full max-w-xs bg-surface-container-highest h-2 rounded-full mt-4 overflow-hidden">

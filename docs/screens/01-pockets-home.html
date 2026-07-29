@@ -145,7 +145,19 @@
     body {
       min-height: 100dvh;
     }
-  </style>
+  
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
+    </style>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden pb-[80px]">
 <!-- Top AppBar (JSON execution) -->
@@ -163,10 +175,7 @@
 <!-- Blue Header Extension (Visual Anchor) -->
 <div class="bg-primary w-full px-container-margin pb-20 pt-6 rounded-b-[40px] relative z-10 flex flex-col items-center shadow-md">
 <div class="text-primary-fixed font-eyebrow text-eyebrow uppercase tracking-wider mb-2">CHECKING</div>
-<div class="font-balance-display text-balance-display text-on-primary flex items-start justify-center">
-<span>$1,284</span>
-<span class="text-xl mt-1 ml-0.5">.40</span>
-</div>
+<div class="font-balance-display text-balance-display text-on-primary flex items-start justify-center"><span class="money-sym">$</span>1,284<span class="money-cents">.40</span></div>
 <div class="mt-4 flex items-center justify-center space-x-3 bg-on-primary/10 rounded-full py-1.5 px-4 backdrop-blur-sm border border-on-primary/20">
 <span class="text-on-primary font-body-md text-body-md opacity-90">$212.60 unallocated</span>
 <div class="h-4 w-px bg-on-primary/30"></div>
@@ -240,10 +249,7 @@
 <div class="w-2 h-2 rounded-full bg-primary-container"></div>
 </div>
 <div class="font-label-md text-label-md text-on-surface-variant font-medium mb-1">Food</div>
-<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3">
-<span>$128</span>
-<span class="text-sm mt-1">.40</span>
-</div>
+<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3"><span class="money-sym">$</span>128<span class="money-cents">.40</span></div>
 <div class="mt-auto">
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-primary-container h-full rounded-full" style="width: 42%;"></div>
@@ -259,10 +265,7 @@
 <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
 </div>
 <div class="font-label-md text-label-md text-on-surface-variant font-medium mb-1">Groceries</div>
-<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3">
-<span>$74</span>
-<span class="text-sm mt-1">.12</span>
-</div>
+<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3"><span class="money-sym">$</span>74<span class="money-cents">.12</span></div>
 <div class="mt-auto">
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-emerald-500 h-full rounded-full" style="width: 49%;"></div>
@@ -278,10 +281,7 @@
 <div class="w-2 h-2 rounded-full bg-secondary"></div>
 </div>
 <div class="font-label-md text-label-md text-on-surface-variant font-medium mb-1">Rent</div>
-<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3">
-<span>$1,650</span>
-<span class="text-sm mt-1">.00</span>
-</div>
+<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3"><span class="money-sym">$</span>1,650</div>
 <div class="mt-auto flex items-center justify-between">
 <div class="flex -space-x-2">
 <div class="w-6 h-6 rounded-full bg-surface-variant border-2 border-surface-container-lowest overflow-hidden">
@@ -305,10 +305,7 @@
 <div class="w-2 h-2 rounded-full bg-amber-400"></div>
 </div>
 <div class="font-label-md text-label-md text-on-surface-variant font-medium mb-1">Books</div>
-<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3">
-<span>$210</span>
-<span class="text-sm mt-1">.00</span>
-</div>
+<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3"><span class="money-sym">$</span>210</div>
 <div class="mt-auto">
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-amber-400 h-full rounded-full" style="width: 52%;"></div>
@@ -327,10 +324,7 @@
                             Transit
                             <span class="material-symbols-outlined text-[14px]">warning</span>
 </div>
-<div class="font-headline-md text-headline-md text-error flex items-start mb-3">
-<span>$18</span>
-<span class="text-sm mt-1">.50</span>
-</div>
+<div class="font-headline-md text-headline-md text-error flex items-start mb-3"><span class="money-sym">$</span>18<span class="money-cents">.50</span></div>
 <div class="mt-auto">
 <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mb-1.5">
 <div class="bg-error h-full rounded-full" style="width: 15%;"></div>
@@ -346,10 +340,7 @@
 <div class="w-2 h-2 rounded-full bg-pink-500"></div>
 </div>
 <div class="font-label-md text-label-md text-on-surface-variant font-medium mb-1">Spring Break</div>
-<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3">
-<span>$340</span>
-<span class="text-sm mt-1">.00</span>
-</div>
+<div class="font-headline-md text-headline-md text-on-surface flex items-start mb-3"><span class="money-sym">$</span>340</div>
 <div class="mt-auto flex items-center justify-between">
 <div class="flex -space-x-2">
 <div class="w-6 h-6 rounded-full bg-surface-variant border-2 border-surface-container-lowest overflow-hidden flex items-center justify-center text-[10px] font-bold text-on-surface-variant bg-tertiary-fixed">

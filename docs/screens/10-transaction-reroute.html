@@ -166,6 +166,18 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -196,7 +208,7 @@
 <img class="w-full h-full object-cover" data-alt="A clean, modern circular logo for a large retail merchant with a red bullseye design on a white background. The image should be perfectly centered and well-lit, typical of a professional brand identity in a banking application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBapoqdHPL7EKQAihuepsk1uAmv3RpmXLRhbinIfbLP_1u1YgIN_yLXlB71yyNSXrBib7s5nfhAk6nWzp3Q3cxLQi5QH4cu37sxDW9TVjpSqhdu2yC3PwTHIYw7XRPSwgyAimZMp4A4agp2Naq0cECre_20XK6HmEtuMW9jtmBIhIhw3DTQLbfCmVIaX7XFux7bGM_tTLfElm1lMLMR7cGc46-nJoqHvEdHzlnrqi-pa7i5DBcoljR"/>
 </div>
 <h2 class="font-headline-md text-headline-md mb-2">Target</h2>
-<div class="font-numeric-table text-[32px] leading-[40px] font-medium text-on-background mb-3">−$62.40</div>
+<div class="font-numeric-table text-[32px] leading-[40px] font-medium text-on-background mb-3">−<span class="money-sym">$</span>62<span class="money-cents">.40</span></div>
 <div class="flex items-center gap-2 mb-4">
 <p class="font-body-md text-body-md text-on-surface-variant">Jul 27 at 4:12 PM</p>
 <span class="w-1 h-1 rounded-full bg-outline-variant"></span>

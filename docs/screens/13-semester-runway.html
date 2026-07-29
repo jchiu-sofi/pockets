@@ -179,6 +179,18 @@
             transform: rotate(5deg);
             transform-origin: left;
         }
+    
+        /* Hero currency: reduced $ and cents sitting on the cap line, matching the
+           SoFi app's stat figures. Row amounts keep full-size cents. */
+        .money-sym,
+        .money-cents {
+            font-size: 52%;
+            font-weight: inherit;
+            letter-spacing: 0;
+            position: relative;
+            top: -0.42em;
+        }
+        .money-sym { margin-right: 0.06em; }
     </style>
 <style>
     body {
@@ -201,7 +213,7 @@
 <main class="pt-[140px] px-container-margin md:max-w-3xl md:mx-auto pb-8">
 <section class="bg-on-secondary-fixed text-on-primary rounded-[20px] p-6 mb-stack-gap shadow-lg relative overflow-hidden">
 <div class="font-eyebrow text-eyebrow text-primary-fixed mb-2 uppercase tracking-widest">FALL SEMESTER</div>
-<div class="font-balance-display text-balance-display mb-1">$2,412.00</div>
+<div class="font-balance-display text-balance-display mb-1"><span class="money-sym">$</span>2,412</div>
 <div class="font-body-md text-body-md text-tertiary-fixed-dim">has to last until December 15 — 140 days</div>
 <div class="chart-container mt-6">
 <div class="line-target"></div>
