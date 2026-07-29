@@ -170,16 +170,16 @@
     </style>
 <style>
     body {
-      min-height: max(884px, 100dvh);
+      min-height: 100dvh;
     }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md font-body-md antialiased relative min-h-screen flex flex-col">
 <!-- Top Navigation (Sheet Header) -->
-<header class="flex justify-between items-center px-container-margin w-full bg-surface-container-lowest h-[64px] border-b border-surface-variant sticky top-0 z-10">
+<header class="flex justify-between items-center px-container-margin w-full bg-surface-container-lowest h-[64px] border-b border-outline-variant sticky top-0 z-10">
 <div class="w-10"></div> <!-- Spacer for centering -->
 <h1 class="font-label-md text-label-md font-semibold">New pocket</h1>
-<button aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors">
+<button aria-label="Close" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors">
 <span class="material-symbols-outlined text-on-surface">close</span>
 </button>
 </header>
@@ -194,47 +194,47 @@
 <span class="text-xl">🍜</span>
 <span class="font-label-md text-label-md">Food</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🛒</span>
 <span class="font-label-md text-label-md">Groceries</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🏠</span>
 <span class="font-label-md text-label-md text-left leading-tight">Rent &amp; Utilities</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">📚</span>
 <span class="font-label-md text-label-md text-left leading-tight">Books &amp; Supplies</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🚌</span>
 <span class="font-label-md text-label-md">Transit</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🎬</span>
 <span class="font-label-md text-label-md">Subscriptions</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🎉</span>
 <span class="font-label-md text-label-md">Going Out</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🧺</span>
 <span class="font-label-md text-label-md">Laundry</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">✈️</span>
 <span class="font-label-md text-label-md">Travel</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">💊</span>
 <span class="font-label-md text-label-md">Health</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">🐣</span>
 <span class="font-label-md text-label-md">Emergency</span>
 </button>
-<button class="flex items-center gap-2 p-3 rounded-xl border border-surface-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-outline-variant transition-colors">
 <span class="text-xl">✨</span>
 <span class="font-label-md text-label-md">Custom</span>
 </button>
@@ -251,18 +251,18 @@
 <section class="mb-8">
 <h3 class="font-eyebrow text-eyebrow text-on-surface-variant uppercase mb-4">COLOR</h3>
 <div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
-<button aria-label="Select Cyan color" class="w-10 h-10 rounded-full bg-primary-container flex-shrink-0 ring-2 ring-primary ring-offset-2 ring-offset-surface relative">
+<button aria-label="Select Cyan color" class="w-11 h-11 rounded-full bg-primary-container flex-shrink-0 ring-2 ring-primary ring-offset-2 ring-offset-surface relative">
 <span class="absolute inset-0 flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary-container text-sm">check</span>
 </span>
 </button>
-<button aria-label="Select Red color" class="w-10 h-10 rounded-full bg-[#E57373] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Green color" class="w-10 h-10 rounded-full bg-[#81C784] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Yellow color" class="w-10 h-10 rounded-full bg-[#FFD54F] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Purple color" class="w-10 h-10 rounded-full bg-[#9575CD] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Teal color" class="w-10 h-10 rounded-full bg-[#4DB6AC] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Orange color" class="w-10 h-10 rounded-full bg-[#FF8A65] flex-shrink-0 hover:scale-110 transition-transform"></button>
-<button aria-label="Select Brown color" class="w-10 h-10 rounded-full bg-[#A1887F] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Red color" class="w-11 h-11 rounded-full bg-[#E57373] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Green color" class="w-11 h-11 rounded-full bg-[#81C784] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Yellow color" class="w-11 h-11 rounded-full bg-[#FFD54F] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Purple color" class="w-11 h-11 rounded-full bg-[#9575CD] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Teal color" class="w-11 h-11 rounded-full bg-[#4DB6AC] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Orange color" class="w-11 h-11 rounded-full bg-[#FF8A65] flex-shrink-0 hover:scale-110 transition-transform"></button>
+<button aria-label="Select Brown color" class="w-11 h-11 rounded-full bg-[#A1887F] flex-shrink-0 hover:scale-110 transition-transform"></button>
 </div>
 </section>
 <!-- Monthly Amount -->

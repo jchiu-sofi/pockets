@@ -91,34 +91,17 @@ if [[ ${#files[@]} -eq 0 ]]; then
   exit 0
 fi
 
-height=$H
-suffix=""
+SCALE=${SCALE:-1}
 
-# Headless Chrome clamps --window-size to a ~500px minimum layout viewport, which
-# silently lays screens out wider than a phone and crops the right edge off the
-# capture. So each screen is loaded inside an exact-width iframe pinned to the top
-# left of an oversized window, and the surrounding window is cropped away after.
-WRAP=$(mktemp -t pockets-wrap).html
-trap 'rm -f "$WRAP"' EXIT
-
-for f in "${files[@]}"; do
-  name=$(basename "$f" .html)
-  cat > "$WRAP" <<EOF
-<!doctype html><meta charset="utf-8">
-<body style="margin:0;background:#fff">
-<iframe src="file://$PWD/$f" scrolling="no"
-        style="width:${W}px;height:${height}px;border:0;display:block"></iframe>
-</body>
-EOF
-  "$CHROME" --headless=new --disable-gpu --hide-scrollbars --no-first-run \
-    --force-device-scale-factor="$SCALE" \
-    --window-size="$((W + 220)),$height" \
-    --screenshot="renders/$name$suffix.png" \
-    --virtual-time-budget=6000 \
-    "file://$WRAP" >/dev/null 2>&1
-  python3 tools/trim-png.py --crop-width "$((W * SCALE))" "renders/$name$suffix.png" >/dev/null
-  echo "renders/$name$suffix.png"
-done
+# tools/cdp.mjs sets the viewport over the DevTools Protocol, so no iframe wrapper or
+# post-crop is needed, and all screens share one browser instead of 16 launches.
+node tools/cdp.mjs --shot-dir renders --width "$W" --height "$H" --scale "$SCALE" \
+  "${files[@]}" | python3 -c "
+import json, sys
+for line in sys.stdin:
+    d = json.loads(line)
+    print('  ' + (d.get('screenshot') or (d['file'] + ': ' + d.get('error', '?'))))
+"
 
 build_gallery
 echo "${#files[@]} screens rendered"

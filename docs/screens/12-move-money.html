@@ -159,7 +159,7 @@
     </style>
 <style>
     body {
-      min-height: max(884px, 100dvh);
+      min-height: 100dvh;
     }
   </style>
 </head>
@@ -167,14 +167,14 @@
 <!-- Dimmed Background Content (Simulated) -->
 <div class="absolute inset-0 z-0 flex flex-col">
 <!-- TopAppBar -->
-<header class="bg-primary dark:bg-primary font-headline-md text-headline-md font-black text-on-primary docked full-width top-0 h-[header-height] bg-primary flat no shadows flex justify-between items-center px-container-margin w-full">
+<header class="bg-primary dark:bg-primary font-headline-md text-headline-md font-black text-on-primary docked full-width top-0 h-header-height bg-primary flat no shadows flex justify-between items-center px-container-margin w-full">
 <div class="flex items-center gap-inline-gap">
-<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
 <span class="material-symbols-outlined" data-icon="menu">menu</span>
 </button>
 <span class="font-headline-md text-headline-md">SoFi Pockets</span>
 </div>
-<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20">
+<button class="w-11 h-11 flex items-center justify-center rounded-full bg-white/20">
 <span class="material-symbols-outlined" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
 </button>
 </header>
@@ -247,7 +247,7 @@
 <!-- Account Selection (From / To) -->
 <div class="relative bg-surface rounded-2xl p-4 shadow-[0px_4px_20px_rgba(32,23,71,0.04)] mb-8">
 <!-- From Row -->
-<div class="flex items-center justify-between pb-4 border-b border-surface-dim">
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant">
 <div class="flex items-center gap-inline-gap">
 <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-lg">🍜</div>
 <div class="flex flex-col">
@@ -261,7 +261,7 @@
 </div>
 </div>
 <!-- Swap Button -->
-<button class="absolute left-8 top-1/2 -translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-surface-dim rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container-highest transition-colors z-10">
+<button class="absolute left-8 top-1/2 -translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-outline-variant rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container-highest transition-colors z-10">
 <span class="material-symbols-outlined text-primary text-sm" data-icon="swap_vert">swap_vert</span>
 </button>
 <!-- To Row -->
@@ -316,7 +316,7 @@
 </button>
 </div>
 <!-- Primary Action -->
-<div class="mt-auto pt-4 border-t border-surface-dim bg-surface-container-lowest sticky bottom-0">
+<div class="mt-auto pt-4 border-t border-outline-variant bg-surface-container-lowest sticky bottom-0">
 <button class="w-full py-4 rounded-full bg-primary text-on-primary font-headline-md text-headline-md font-bold shadow-sm hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
 <span>Move</span>
 <span class="font-numeric-table">$40.00</span>

@@ -253,6 +253,55 @@ def rewrite_radii(html: str) -> tuple[str, int]:
     return html[:m.start()] + replacement + html[m.end():], 1
 
 
+# Every export hardcodes `body { min-height: max(884px, 100dvh) }` — 884px is the
+# Stitch canvas height. On any shorter phone (844px on an iPhone 16) that floor makes
+# the document 40px taller than the viewport, so anything anchored to `bottom-0` (a
+# bottom sheet and its call-to-action, a docked footer) is pushed below the fold with
+# no way to scroll to it, because these layouts are `overflow-hidden`.
+def rewrite_min_height(html: str) -> tuple[str, int]:
+    fixed = re.sub(r"min-height:\s*max\(\d+px,\s*100dvh\)", "min-height: 100dvh", html)
+    return fixed, int(fixed != html)
+
+
+# `h-[header-height]` wraps a spacing *token name* in arbitrary-value brackets, which
+# emits `height: header-height` — invalid CSS, silently dropped, so the element gets
+# no height at all. The token exists in the config; it just needs the normal syntax.
+def rewrite_bracketed_tokens(html: str) -> tuple[str, int]:
+    fixed = re.sub(r"\b([a-z]{1,3})-\[([a-z][a-z-]*)\]", r"\1-\2", html)
+    return fixed, int(fixed != html)
+
+
+# Hairline borders were drawn with four subtly different greys — outline-variant
+# (#D9D5D0), surface-variant (#E9E6E1), surface-container-high (#ECE9E4) and
+# surface-container (#F2F0EC) — so dividers and card edges never quite matched.
+# outline-variant is the token meant for boundaries; the others are fill colours.
+# border-surface-container-lowest is left alone: that is the deliberate white ring
+# that separates stacked avatars.
+def rewrite_borders(html: str) -> tuple[str, int]:
+    pattern = (r"\bborder-surface-"
+               r"(?:variant|dim|container-highest|container-high|container(?!-))\b")
+    fixed, n = re.subn(pattern, "border-outline-variant", html)
+    return fixed, n
+
+
+# Two screens use Tailwind's build-time `theme('colors.x')` function inside a plain
+# <style> block. That only resolves when a compiler processes the CSS; under the
+# Play CDN the declaration is invalid at runtime and silently dropped — which left
+# screen 07's Ink card with no background at all, rendering white text on white.
+# Resolve them against the screen's own colour config.
+def rewrite_theme_calls(html: str) -> tuple[str, int]:
+    block = re.search(r'["\']?colors["\']?\s*:\s*\{(.*?)\n\s{4,}\}', html, re.S)
+    defined = dict(re.findall(r'["\']?([\w-]+)["\']?\s*:\s*["\'](#[0-9a-fA-F]{6})',
+                              block.group(1))) if block else {}
+
+    def sub(m: re.Match) -> str:
+        name = m.group(1)
+        return defined.get(name) or TOKENS.get(name) or m.group(0)
+
+    fixed, n = re.subn(r"theme\(\s*['\"]colors\.([\w-]+)['\"]\s*\)", sub, html)
+    return fixed, n
+
+
 def rewrite_tokens(html: str) -> tuple[str, int]:
     """Replace "token": "#hex" pairs inside the tailwind config block."""
     count = 0
@@ -293,6 +342,10 @@ def main() -> int:
         html, n_literals = rewrite_literals(html)
         html, n_radii = rewrite_radii(html)
         html, n_fonts = rewrite_fonts(html)
+        html, n_minh = rewrite_min_height(html)
+        html, n_brackets = rewrite_bracketed_tokens(html)
+        html, n_borders = rewrite_borders(html)
+        html, n_theme = rewrite_theme_calls(html)
 
         total_tokens += n_tokens
         total_literals += n_literals
@@ -305,6 +358,14 @@ def main() -> int:
             status.append("radii")
         if n_fonts:
             status.append(f"{n_fonts} fonts")
+        if n_minh:
+            status.append("min-height")
+        if n_brackets:
+            status.append("bracketed tokens")
+        if n_borders:
+            status.append(f"{n_borders} borders")
+        if n_theme:
+            status.append(f"{n_theme} theme() calls")
         print(f"  {path.name:<30} {', '.join(status) or 'already on brand'}")
 
         if not check and html != original:

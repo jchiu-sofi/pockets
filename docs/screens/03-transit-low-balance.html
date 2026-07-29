@@ -117,13 +117,13 @@
     </style>
 <style>
     body {
-      min-height: max(884px, 100dvh);
+      min-height: 100dvh;
     }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased pb-24 md:pb-0 hide-scrollbar overflow-x-hidden w-full h-full min-h-screen">
 <!-- Top Navigation (Web) -->
-<header class="hidden md:flex bg-primary text-on-primary font-headline-md text-headline-md docked full-width top-0 h-[header-height] flat no shadows transition-opacity duration-200 justify-between items-center px-container-margin w-full fixed z-50">
+<header class="hidden md:flex bg-primary text-on-primary font-headline-md text-headline-md docked full-width top-0 h-header-height flat no shadows transition-opacity duration-200 justify-between items-center px-container-margin w-full fixed z-50">
 <div class="flex items-center gap-inline-gap hover:opacity-80 cursor-pointer">
 <span class="material-symbols-outlined text-[28px]" data-icon="menu">menu</span>
 </div>
@@ -132,15 +132,15 @@
 <span class="material-symbols-outlined text-primary" data-icon="person">person</span>
 </div>
 </header>
-<main class="md:pt-[header-height] md:max-w-3xl mx-auto w-full pb-20">
+<main class="md:pt-header-height md:max-w-3xl mx-auto w-full pb-20">
 <!-- Header Block (Mobile Sticky) -->
 <div class="bg-tertiary-fixed text-on-tertiary-fixed pt-12 pb-6 px-container-margin rounded-b-[32px] md:rounded-3xl md:mt-6 shadow-sm sticky top-0 z-40 md:relative md:top-auto">
 <div class="flex justify-between items-center mb-8">
-<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
 <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
 </button>
 <h1 class="font-headline-md text-headline-md text-center flex-1">🚌 Transit</h1>
-<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
+<button class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-lowest/50 hover:bg-surface-container-lowest/80 transition-colors">
 <span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
 </button>
 </div>
@@ -199,7 +199,7 @@
 </section>
 <!-- Transactions List -->
 <section class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(32,23,71,0.06)]">
-<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider mb-4 border-b border-surface-container-highest pb-2">THIS MONTH</div>
+<div class="font-eyebrow text-eyebrow text-on-surface tracking-wider mb-4 border-b border-outline-variant pb-2">THIS MONTH</div>
 <div class="space-y-4">
 <!-- Transaction 1 -->
 <div class="flex items-center justify-between">
@@ -268,10 +268,10 @@
         /* Custom toggle switch CSS since standard Tailwind form plugin might not cover this specific look perfectly without extra classes */
         .toggle-checkbox:checked {
             right: 0;
-            border-color: theme('colors.primary');
+            border-color: #00A2C7;
         }
         .toggle-checkbox:checked + .toggle-label {
-            background-color: theme('colors.primary');
+            background-color: #00A2C7;
         }
         .toggle-checkbox {
             transition: all 0.3s ease;
