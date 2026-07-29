@@ -27,8 +27,11 @@ TOKENS = {
     # SoFi Blue carries headers, primary fills, and links.
     "primary": "#00A2C7",
     "on-primary": "#FFFFFF",
-    "primary-container": "#E3F4FA",
-    "on-primary-container": "#00485A",
+    # Stitch treats primary-container as a saturated fill with light content on
+    # top (bg-primary-container + text-surface-container-lowest), so this has to
+    # stay brand cyan rather than becoming a pale tint.
+    "primary-container": "#00A2C7",
+    "on-primary-container": "#FFFFFF",
     "primary-fixed": "#CFEFF8",
     "on-primary-fixed": "#001F28",
     "primary-fixed-dim": "#7FD9EF",
