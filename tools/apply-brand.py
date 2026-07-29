@@ -115,6 +115,116 @@ LITERALS = {
 
 
 
+# The Stitch project's design system is Figtree (headline/display), Inter (body,
+# label, eyebrow) and Roboto Mono (tabular numerals). Its canvas renders with that
+# system, but some screens were exported with a per-screen stack instead — screens
+# 02 and 15 embed Plus Jakarta Sans and JetBrains Mono, and request them from Google
+# Fonts. That's why a header reads as "some random font" next to screen 01.
+#
+# Token names differ between export batches (balance-display vs data-display), so
+# the family is chosen from the token's name rather than a fixed list.
+FONT_HEADLINE = "Figtree"
+FONT_BODY = "Inter"
+FONT_MONO = "Roboto Mono"
+
+GOOGLE_FONTS_HREF = (
+    "https://fonts.googleapis.com/css2"
+    "?family=Figtree:wght@400;500;600;700;800;900"
+    "&family=Inter:wght@400;500;600;700"
+    "&family=Roboto+Mono:wght@400;500"
+    "&display=swap"
+)
+
+
+def family_for(token: str) -> tuple[str, str]:
+    """Canonical family for a fontFamily token name, plus its CSS generic fallback."""
+    t = token.lower()
+    # Tabular figures first: `numeric-table` also contains no display keyword, but
+    # check mono-ish names before the display ones so nothing is misrouted.
+    if any(k in t for k in ("numeric", "mono", "tabular", "code")):
+        return FONT_MONO, "monospace"
+    if any(k in t for k in ("headline", "display", "balance", "cents", "title", "heading")):
+        return FONT_HEADLINE, "sans-serif"
+    return FONT_BODY, "sans-serif"
+
+
+def rewrite_fonts(html: str) -> tuple[str, int]:
+    """Point every fontFamily token at the design system's families."""
+    count = 0
+    # Keys are quoted in some exports and bare in others.
+    block = re.search(r'(["\']?fontFamily["\']?\s*:\s*\{)(.*?)(\n\s*\})', html, re.S)
+    if block:
+        body = block.group(2)
+
+        def sub_entry(m: re.Match) -> str:
+            nonlocal count
+            token = m.group("token")
+            family, generic = family_for(token)
+            want = f'"{family}", "{generic}"'
+            if m.group("val").strip() == want:
+                return m.group(0)
+            count += 1
+            return f'{m.group("head")}[{want}]'
+
+        body = re.sub(
+            r'(?P<head>["\']?(?P<token>[\w-]+)["\']?\s*:\s*)\[(?P<val>[^\]]*)\]',
+            sub_entry, body)
+        html = html[:block.start(2)] + body + html[block.end(2):]
+
+    # Repoint the webfont request too, or the families above resolve to nothing.
+    def sub_link(m: re.Match) -> str:
+        nonlocal count
+        href = m.group(1)
+        if "Material+Symbols" in href:
+            return m.group(0)
+        if href == GOOGLE_FONTS_HREF.replace("&", "&amp;"):
+            return m.group(0)
+        count += 1
+        return m.group(0).replace(href, GOOGLE_FONTS_HREF.replace("&", "&amp;"))
+
+    html = re.sub(r'href="(https://fonts\.googleapis\.com/css2\?[^"]*)"', sub_link, html)
+
+    # Some exports also set the family in a plain <style> rule, which would override
+    # the config for anything without an explicit font utility.
+    def sub_css(m: re.Match) -> str:
+        nonlocal count
+        stack = m.group(1)
+        if FONT_HEADLINE in stack or FONT_BODY in stack or FONT_MONO in stack:
+            return m.group(0)
+        count += 1
+        generic = "monospace" if "monospace" in stack.lower() else "sans-serif"
+        family = FONT_MONO if generic == "monospace" else FONT_BODY
+        return f"font-family: '{family}', {generic}"
+
+    html = re.sub(r"font-family:\s*([^;}\n]+)", sub_css, html)
+
+    # Keep the stale generated comment from contradicting the file.
+    html = html.replace(
+        "<!-- Google Fonts: JetBrains Mono and Plus Jakarta Sans -->",
+        "<!-- Google Fonts: Figtree, Inter, Roboto Mono -->")
+
+    # The design system sets the hero balance at weight 800 (`balance-display`).
+    # The `data-display` token invented by two exports uses 600, which reads
+    # visibly lighter next to the other screens. Align the display weights.
+    def sub_weight(m: re.Match) -> str:
+        nonlocal count
+        token, size, inner = m.group("token"), m.group("size"), m.group("inner")
+        if not any(k in token.lower() for k in ("balance", "data-display", "cents")):
+            return m.group(0)
+        # Inner keys are quoted in some exports and bare in others.
+        fixed = re.sub(r'(["\']?fontWeight["\']?\s*:\s*")(\d+)(")',
+                       r"\g<1>800\g<3>", inner)
+        if fixed == inner:
+            return m.group(0)
+        count += 1
+        return m.group(0).replace(inner, fixed)
+
+    html = re.sub(
+        r'"(?P<token>[\w-]+)":\s*\[\s*"(?P<size>[\d.]+px)",\s*\{(?P<inner>[^}]*)\}',
+        sub_weight, html)
+    return html, count
+
+
 # Stitch's HTML export ships a borderRadius scale shifted a step smaller than the
 # one its own design system declares, so every `rounded-xl` card renders at 12px
 # instead of the 24px the DESIGN.md specifies (and `sm`/`md` are dropped entirely,
@@ -182,6 +292,7 @@ def main() -> int:
         html, n_tokens = rewrite_tokens(original)
         html, n_literals = rewrite_literals(html)
         html, n_radii = rewrite_radii(html)
+        html, n_fonts = rewrite_fonts(html)
 
         total_tokens += n_tokens
         total_literals += n_literals
@@ -192,6 +303,8 @@ def main() -> int:
             status.append(f"{n_literals} literals")
         if n_radii:
             status.append("radii")
+        if n_fonts:
+            status.append(f"{n_fonts} fonts")
         print(f"  {path.name:<30} {', '.join(status) or 'already on brand'}")
 
         if not check and html != original:
