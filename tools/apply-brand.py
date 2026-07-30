@@ -348,6 +348,97 @@ def rewrite_eyebrow_tracking(html: str) -> tuple[str, int]:
     return html, count
 
 
+# Each screen shipped its own typography scale, and two batches used different token
+# names for the same role: screens 02 and 15 define `data-display`/`data-cents` where
+# the other fourteen define `balance-display`. That makes no class name portable —
+# `text-balance-display` silently resolves to nothing on those two screens — which is
+# why the same hero balance rendered at 44px on Transit and 28px on Food.
+#
+# One scale, written into every screen. Values come from the Stitch project's own
+# design system. data-display and data-cents are kept as aliases so markup from that
+# batch still resolves.
+TYPE_FAMILY = {
+    "balance-display": "Figtree", "data-display": "Figtree", "data-cents": "Figtree",
+    "headline-lg": "Figtree", "headline-md": "Figtree",
+    "body-lg": "Inter", "body-md": "Inter", "body-sm": "Inter",
+    "label-md": "Inter", "eyebrow": "Inter",
+    "numeric-table": "Roboto Mono",
+}
+
+TYPE_SIZE = {
+    "balance-display": ("44px", "44px", "800", None),
+    "data-display":    ("44px", "44px", "800", None),
+    "data-cents":      ("23px", "1",    "800", None),
+    "headline-lg":     ("32px", "40px", "800", None),
+    "headline-md":     ("24px", "32px", "700", None),
+    "body-lg":         ("16px", "24px", "500", None),
+    "body-md":         ("16px", "24px", "400", None),
+    "body-sm":         ("14px", "20px", "400", None),
+    "label-md":        ("14px", "20px", "500", None),
+    "eyebrow":         ("11px", "16px", "600", "0.08em"),
+    "numeric-table":   ("14px", "20px", "400", None),
+}
+
+
+def _block(html, key):
+    """Locate a config sub-object by brace matching.
+
+    A regex cannot do this: entries in these configs are formatted multi-line, so
+    `(.*?)\n\s*\}` stops at the first nested object's closing brace and truncates
+    the block — which silently corrupts the config and makes every custom utility
+    resolve to nothing.
+    """
+    m = re.search(r'(["\']?)' + key + r'\1?\s*:\s*\{', html)
+    if not m:
+        return None
+    open_at = html.index("{", m.end() - 1)
+    depth = 0
+    for i in range(open_at, len(html)):
+        if html[i] == "{":
+            depth += 1
+        elif html[i] == "}":
+            depth -= 1
+            if depth == 0:
+                # Indentation of the closing brace, for regenerating the body.
+                line_start = html.rfind("\n", 0, i) + 1
+                return m.start(), open_at, i, html[line_start:i]
+    return None
+
+
+def _replace_block(html, key, body_lines):
+    found = _block(html, key)
+    if not found:
+        return html, 0
+    start, open_at, close_at, indent = found
+    pad = indent + "    "
+    body = ",\n".join(pad + line for line in body_lines)
+    new = html[:open_at + 1] + "\n" + body + "\n" + indent + html[close_at:]
+    return (new, 1) if new != html else (html, 0)
+
+
+def rewrite_typography(html: str) -> tuple[str, int]:
+    changed = 0
+
+    fam_lines = [
+        '"%s": ["%s", "%s"]' % (tok, fam,
+                                "monospace" if fam == "Roboto Mono" else "sans-serif")
+        for tok, fam in TYPE_FAMILY.items()
+    ]
+    html, n = _replace_block(html, "fontFamily", fam_lines)
+    changed += n
+
+    size_lines = []
+    for tok, (size, lh, weight, ls) in TYPE_SIZE.items():
+        inner = '"lineHeight": "%s", "fontWeight": "%s"' % (lh, weight)
+        if ls:
+            inner += ', "letterSpacing": "%s"' % ls
+        size_lines.append('"%s": ["%s", { %s }]' % (tok, size, inner))
+    html, n = _replace_block(html, "fontSize", size_lines)
+    changed += n
+
+    return html, changed
+
+
 def rewrite_tokens(html: str) -> tuple[str, int]:
     """Replace "token": "#hex" pairs inside the tailwind config block."""
     count = 0
@@ -388,6 +479,7 @@ def main() -> int:
         html, n_literals = rewrite_literals(html)
         html, n_radii = rewrite_radii(html)
         html, n_fonts = rewrite_fonts(html)
+        html, n_type = rewrite_typography(html)
         html, n_minh = rewrite_min_height(html)
         html, n_brackets = rewrite_bracketed_tokens(html)
         html, n_borders = rewrite_borders(html)
@@ -406,6 +498,8 @@ def main() -> int:
             status.append("radii")
         if n_fonts:
             status.append(f"{n_fonts} fonts")
+        if n_type:
+            status.append("type scale")
         if n_minh:
             status.append("min-height")
         if n_brackets:

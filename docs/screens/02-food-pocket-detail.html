@@ -82,22 +82,30 @@
                         "gutter": "16px"
                     },
                     fontFamily: {
+                        "balance-display": ["Figtree", "sans-serif"],
                         "data-display": ["Figtree", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg": ["Figtree", "sans-serif"],
                         "data-cents": ["Figtree", "sans-serif"],
+                        "headline-lg": ["Figtree", "sans-serif"],
+                        "headline-md": ["Figtree", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
                         "body-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
                         "eyebrow": ["Inter", "sans-serif"],
-                        "headline-md": ["Figtree", "sans-serif"]
+                        "numeric-table": ["Roboto Mono", "monospace"]
                     },
                     fontSize: {
-                        "data-display": ["28px", { lineHeight: "32px", fontWeight: "800" }],
-                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }],
-                        "headline-lg": ["32px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "800" }],
-                        "data-cents": ["16.8px", { lineHeight: "1", fontWeight: "800" }], /* 0.6em of 28px */
-                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
-                        "eyebrow": ["11px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "800" }],
-                        "headline-md": ["24px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                        "balance-display": ["44px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "data-display": ["44px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "data-cents": ["23px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "eyebrow": ["11px", { "lineHeight": "16px", "fontWeight": "600", "letterSpacing": "0.08em" }],
+                        "numeric-table": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
                     }
                 }
             }
@@ -220,7 +228,7 @@
 <!-- Central Amount -->
 <div class="relative z-10 text-center flex flex-col items-center">
 <div class="flex items-start justify-center">
-<span class="font-data-display text-data-display text-surface-container-lowest tracking-tight"><span class="money-sym">$</span>128</span>
+<span class="font-balance-display text-balance-display text-surface-container-lowest tracking-tight"><span class="money-sym">$</span>128</span>
 <span class="font-data-cents text-data-cents text-surface-container-lowest mt-1">.40</span>
 </div>
 <p class="font-body-md text-body-md text-surface-container-lowest opacity-80 mt-1">of $300 this month</p>

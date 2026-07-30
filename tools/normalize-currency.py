@@ -178,6 +178,45 @@ def rewrite_captions(html: str) -> tuple[str, int]:
     return html, count + n
 
 
+
+# Money figures belong to two tiers: the screen's hero balance at 44px
+# (`balance-display`) and a pocket-tile stat at 24px (`headline-md`). Screens 02 and
+# 15 came out of a different generation batch using a non-system `data-display` token
+# at 28px for the hero and 20px for tiles, so the same figure was a different size
+# depending on which screen you were looking at. Screen 07's share amount was set in
+# Roboto Mono, which the brand guidelines reserve strictly for tabulated numerals.
+TIERS = [
+    # Hero balance -> 44px
+    ("font-data-display text-data-display text-surface-container-lowest",
+     "font-balance-display text-balance-display text-surface-container-lowest"),
+    ("font-data-display text-data-display text-on-primary mb-4",
+     "font-balance-display text-balance-display text-on-primary mb-4"),
+    # Pocket tile stat -> 24px, matching screen 01
+    ("font-data-display text-data-display text-on-surface text-xl",
+     "font-headline-md text-headline-md text-on-surface"),
+    # A single share amount is not a table of figures. text-3xl (30px) is also off
+    # the scale; headline-lg is the 32px step.
+    ("font-numeric-table text-numeric-table text-3xl font-bold",
+     "font-balance-display text-headline-lg font-bold"),
+    ("font-balance-display text-3xl font-bold",
+     "font-balance-display text-headline-lg font-bold"),
+    # The transaction amount is that screen's hero, so it takes the hero tier — and
+    # it was set in Roboto Mono at an arbitrary 32px, off both the family and scale.
+    ("font-numeric-table text-[32px] leading-[40px] font-medium",
+     "font-balance-display text-balance-display"),
+]
+
+
+def rewrite_tiers(html: str) -> tuple[str, int]:
+    count = 0
+    for before, after in TIERS:
+        n = html.count(before)
+        if n:
+            html = html.replace(before, after)
+            count += n
+    return html, count
+
+
 def ensure_style(html: str) -> tuple[str, int]:
     if ".money-cents" in html:
         return html, 0
@@ -196,7 +235,8 @@ def main() -> int:
         html, n_split = rewrite_split_sign(html)
         html, n_rows = rewrite_row_amounts(html)
         html, n_caps = rewrite_captions(html)
-        if n_hero or n_split or n_rows or n_caps:
+        html, n_tiers = rewrite_tiers(html)
+        if n_hero or n_split or n_rows or n_caps or n_tiers:
             html, _ = ensure_style(html)
         totals = [t + n for t, n in zip(totals, (n_hero, n_split, n_rows))]
 
@@ -209,6 +249,8 @@ def main() -> int:
             bits.append(f"{n_rows} row")
         if n_caps:
             bits.append(f"{n_caps} caption")
+        if n_tiers:
+            bits.append(f"{n_tiers} tier")
         print(f"  {path.name:<30} {', '.join(bits) or 'consistent'}")
 
         if not check and html != original:
